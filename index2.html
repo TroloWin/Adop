@@ -14,7 +14,6 @@
       background-color: #d7cff7;
     }
 
-    /* Transiciones globales */
     * {
       transition: all 0.25s ease;
     }
@@ -46,14 +45,15 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    /* Video adaptado */
-    video {
+    .video-logo img,
+    .video-login img,
+    .video-titulo img,
+    .contenedor-video img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    /* En hover el borde del video brilla */
     .video-logo:hover,
     .video-login:hover,
     .contenedor-video:hover {
@@ -84,7 +84,7 @@
       transform: scale(1.05);
     }
 
-    /* -------- VIDEO LOGIN -------- */
+    /* -------- GIF LOGIN -------- */
     .video-login {
       width: 50px;
       height: 50px;
@@ -144,15 +144,9 @@
       cursor: pointer;
     }
 
-    /* Hover animado */
-    .contenedor-video:hover video {
+    .contenedor-video:hover img {
       filter: brightness(1.25);
       transform: scale(1.06);
-    }
-
-    /* Pausar video al hover */
-    .contenedor-video:hover video {
-      animation-play-state: paused;
     }
 
     /* ------------------- BOTÓN ADOPTAR ------------------- */
@@ -176,7 +170,6 @@
       box-shadow: 0 0 20px rgba(255,255,255,0.7);
     }
 
-    /* ------------------- RESPONSIVE ------------------- */
     @media (max-width: 600px) {
       header {
         padding: 15px;
@@ -206,7 +199,7 @@
   <!-- ------------------- HEADER ------------------- -->
   <header>
     <div class="video-logo">
-      <video src="assets/daioh.mp4" autoplay loop muted></video>
+      <img src="assets/daioh.gif">
     </div>
 
     <nav>
@@ -215,7 +208,7 @@
       <a>Login</a>
 
       <div class="video-login">
-        <video src="assets/daioh.mp4" autoplay loop muted></video>
+        <img src="assets/daioh.gif">
       </div>
     </nav>
   </header>
@@ -224,15 +217,15 @@
   <section>
     <div class="titulo">
       <div class="video-titulo">
-        <video src="assets/daioh.mp4" autoplay loop muted></video>
+        <img src="assets/daioh.gif">
       </div>
       Pasos para registrarse
     </div>
 
     <div class="contenedor-videos">
-      <div class="contenedor-video"><video src="assets/daioh.mp4" autoplay loop muted></video></div>
-      <div class="contenedor-video"><video src="assets/daioh.mp4" autoplay loop muted></video></div>
-      <div class="contenedor-video"><video src="assets/daioh.mp4" autoplay loop muted></video></div>
+      <div class="contenedor-video"><img src="assets/daioh.gif"></div>
+      <div class="contenedor-video"><img src="assets/daioh.gif"></div>
+      <div class="contenedor-video"><img src="assets/daioh.gif"></div>
     </div>
   </section>
 
@@ -240,16 +233,16 @@
   <section>
     <div class="titulo">
       <div class="video-titulo">
-        <video src="assets/daioh.mp4" autoplay loop muted></video>
+        <img src="assets/daioh.gif">
       </div>
       Pasos para adoptar
     </div>
 
     <div class="contenedor-videos">
-      <div class="contenedor-video"><video src="assets/daioh.mp4" autoplay loop muted></video></div>
-      <div class="contenedor-video"><video src="assets/daioh.mp4" autoplay loop muted></video></div>
-      <div class="contenedor-video"><video src="assets/daioh.mp4" autoplay loop muted></video></div>
-      <div class="contenedor-video"><video src="assets/daioh.mp4" autoplay loop muted></video></div>
+      <div class="contenedor-video"><img src="assets/daioh.gif"></div>
+      <div class="contenedor-video"><img src="assets/daioh.gif"></div>
+      <div class="contenedor-video"><img src="assets/daioh.gif"></div>
+      <div class="contenedor-video"><img src="assets/daioh.gif"></div>
     </div>
   </section>
 
