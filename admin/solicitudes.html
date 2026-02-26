@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Revisar Solicitudes | Admin</title>
+    <link rel="stylesheet" href="../css/estilos-admin.css" />
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <!-- mismo sidebar -->
+        </aside>
+
+        <main class="admin-contenido">
+            <header class="admin-header">
+                <h1>Gestión de Solicitudes (RF4.4)</h1>
+            </header>
+
+            <div class="solicitudes-pendientes">
+                <h2>Solicitudes pendientes de revisión</h2>
+                
+                <div class="solicitud-revision">
+                    <div class="solicitud-info">
+                        <h3>Solicitud #001 - María González</h3>
+                        <p><strong>Mascota:</strong> Luna (Perro, 2 años)</p>
+                        <p><strong>Fecha solicitud:</strong> 15/01/2024 14:30</p>
+                        <p><strong>Teléfono contacto:</strong> 123-456-7890</p>
+                        <p><strong>Dirección:</strong> Calle Principal 123</p>
+                        <p><strong>Motivo adopción:</strong> Busca compañía para su hijo</p>
+                    </div>
+                    <div class="solicitud-acciones">
+                        <button class="btn-aprobar" onclick="procesarSolicitud(1, 'aprobar')">Aprobar (RF4.5)</button>
+                        <button class="btn-rechazar" onclick="procesarSolicitud(1, 'rechazar')">Rechazar (RF4.5)</button>
+                        <button class="btn-ver" onclick="verDetalle(1)">Ver detalle completo</button>
+                    </div>
+                </div>
+
+                <div class="solicitud-revision">
+                    <div class="solicitud-info">
+                        <h3>Solicitud #002 - Juan Pérez</h3>
+                        <p><strong>Mascota:</strong> Max (Perro, 3 años)</p>
+                        <p><strong>Fecha solicitud:</strong> 14/01/2024 09:15</p>
+                        <p><strong>Teléfono contacto:</strong> 098-765-4321</p>
+                        <p><strong>Dirección:</strong> Avenida Central 456</p>
+                        <p><strong>Motivo adopción:</strong> Experiencia previa con perros</p>
+                    </div>
+                    <div class="solicitud-acciones">
+                        <button class="btn-aprobar" onclick="procesarSolicitud(2, 'aprobar')">Aprobar</button>
+                        <button class="btn-rechazar" onclick="procesarSolicitud(2, 'rechazar')">Rechazar</button>
+                        <button class="btn-ver" onclick="verDetalle(2)">Ver detalle completo</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- historial solicitudes procesadas -->
+            <div class="solicitudes-historial">
+                <h2>Solicitudes procesadas</h2>
+                <table class="tabla-admin">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Adoptante</th>
+                            <th>Mascota</th>
+                            <th>Fecha</th>
+                            <th>Decisión</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>003</td>
+                            <td>Ana Martínez</td>
+                            <td>Simba</td>
+                            <td>12/01/2024</td>
+                            <td><span class="estado-badge aprobada">Aprobada</span></td>
+                        </tr>
+                        <tr>
+                            <td>004</td>
+                            <td>Carlos López</td>
+                            <td>Mia</td>
+                            <td>11/01/2024</td>
+                            <td><span class="estado-badge rechazada">Rechazada</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/admin.js"></script>
+</body>
+</html>

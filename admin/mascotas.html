@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestionar Mascotas | Admin</title>
+    <link rel="stylesheet" href="../css/estilos-admin.css" />
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <!-- mismo sidebar -->
+        </aside>
+
+        <main class="admin-contenido">
+            <header class="admin-header">
+                <h1>Gestión de Mascotas</h1>
+                <a href="mascota-nueva.html" class="btn-primario">+ Registrar nueva mascota (RF3.2)</a>
+            </header>
+
+            <!-- filtros -->
+            <div class="filtros-admin">
+                <input type="text" placeholder="Buscar mascota..." />
+                <select>
+                    <option>Todos los estados</option>
+                    <option>Disponible</option>
+                    <option>En proceso</option>
+                    <option>Adoptado</option>
+                </select>
+                <select>
+                    <option>Todas las especies</option>
+                    <option>Perro</option>
+                    <option>Gato</option>
+                </select>
+                <button class="btn-filtrar">Filtrar</button>
+            </div>
+
+            <!-- tabla mascotas -->
+            <table class="tabla-admin">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Especie</th>
+                        <th>Edad</th>
+                        <th>Estado (RF3.4)</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>Luna</td>
+                        <td>Perro</td>
+                        <td>2 años</td>
+                        <td>
+                            <select class="estado-select" data-id="1">
+                                <option value="disponible" selected>Disponible</option>
+                                <option value="proceso">En proceso</option>
+                                <option value="adoptado">Adoptado</option>
+                            </select>
+                        </td>
+                        <td class="acciones">
+                            <a href="mascota-editar.html?id=1" class="btn-editar">Editar (RF3.3)</a>
+                            <button class="btn-eliminar" onclick="confirmarEliminar(1)">Eliminar (RF3.5)</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>Max</td>
+                        <td>Perro</td>
+                        <td>3 años</td>
+                        <td>
+                            <select class="estado-select" data-id="2">
+                                <option value="disponible">Disponible</option>
+                                <option value="proceso" selected>En proceso</option>
+                                <option value="adoptado">Adoptado</option>
+                            </select>
+                        </td>
+                        <td class="acciones">
+                            <a href="mascota-editar.html?id=2" class="btn-editar">Editar</a>
+                            <button class="btn-eliminar" onclick="confirmarEliminar(2)">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- modal confirmacion eliminacion -->
+            <div id="modalEliminar" class="modal">
+                <div class="modal-contenido">
+                    <h3>¿Eliminar mascota?</h3>
+                    <p>Esta acción no se puede deshacer (RF3.5)</p>
+                    <div class="modal-botones">
+                        <button class="btn-secundario" onclick="cerrarModal()">Cancelar</button>
+                        <button class="btn-peligro">Confirmar eliminación</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/admin.js"></script>
+</body>
+</html>

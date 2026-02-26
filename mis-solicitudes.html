@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mis Solicitudes | Patitas Felices</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+    <nav class="navegacion">
+        <!-- mismo nav que en perfil -->
+    </nav>
+
+    <main class="solicitudes-contenedor">
+        <div class="contenedor">
+            <h1>Mis solicitudes de adopción (RF4.2)</h1>
+            <p class="subtitulo">Consulta el estado de tus solicitudes</p>
+
+            <div class="solicitudes-tabs">
+                <button class="tab activo">Todas</button>
+                <button class="tab">Pendientes</button>
+                <button class="tab">Aprobadas</button>
+                <button class="tab">Rechazadas</button>
+            </div>
+
+            <div class="solicitudes-lista">
+                <!-- solicitud 1 - pendiente -->
+                <div class="solicitud-tarjeta pendiente">
+                    <div class="solicitud-header">
+                        <h3>Solicitud para Luna</h3>
+                        <span class="solicitud-estado pendiente">En revisión</span>
+                    </div>
+                    <div class="solicitud-info">
+                        <p><strong>Mascota:</strong> Luna - Perro, 2 años</p>
+                        <p><strong>Fecha de solicitud (RF4.3):</strong> 15/01/2024 14:30</p>
+                        <p><strong>Última actualización:</strong> 16/01/2024 10:15</p>
+                    </div>
+                    <div class="solicitud-acciones">
+                        <a href="solicitud-detalle.html?id=1" class="btn btn-secundario btn-pequeno">Ver detalle</a>
+                    </div>
+                </div>
+
+                <!-- solicitud 2 - aprobada -->
+                <div class="solicitud-tarjeta aprobada">
+                    <div class="solicitud-header">
+                        <h3>Solicitud para Max</h3>
+                        <span class="solicitud-estado aprobada">Aprobada</span>
+                    </div>
+                    <div class="solicitud-info">
+                        <p><strong>Mascota:</strong> Max - Perro, 3 años</p>
+                        <p><strong>Fecha de solicitud:</strong> 10/01/2024 09:45</p>
+                        <p><strong>Fecha de aprobación:</strong> 12/01/2024 16:20</p>
+                    </div>
+                    <div class="solicitud-acciones">
+                        <a href="solicitud-detalle.html?id=2" class="btn btn-secundario btn-pequeno">Ver detalle</a>
+                        <button class="btn btn-primario btn-pequeno">Contactar</button>
+                    </div>
+                </div>
+
+                <!-- solicitud 3 - rechazada -->
+                <div class="solicitud-tarjeta rechazada">
+                    <div class="solicitud-header">
+                        <h3>Solicitud para Simba</h3>
+                        <span class="solicitud-estado rechazada">Rechazada</span>
+                    </div>
+                    <div class="solicitud-info">
+                        <p><strong>Mascota:</strong> Simba - Gato, 1 año</p>
+                        <p><strong>Fecha de solicitud:</strong> 05/01/2024 11:20</p>
+                        <p><strong>Motivo:</strong> No cumple con los requisitos de espacio</p>
+                    </div>
+                    <div class="solicitud-acciones">
+                        <a href="solicitud-detalle.html?id=3" class="btn btn-secundario btn-pequeno">Ver detalle</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- notificaciones (RF4.6) -->
+            <div class="notificaciones-seccion">
+                <h2>Notificaciones recientes</h2>
+                <div class="notificacion">
+                    <span class="notificacion-icono">✓</span>
+                    <p>Tu solicitud para Max ha sido aprobada</p>
+                    <small>Hace 2 días</small>
+                </div>
+                <div class="notificacion">
+                    <span class="notificacion-icono">⏳</span>
+                    <p>Tu solicitud para Luna está en revisión</p>
+                    <small>Hace 3 días</small>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/solicitudes.js"></script>
+</body>
+</html>

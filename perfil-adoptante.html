@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Perfil | Patitas Felices</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+    <nav class="navegacion">
+        <div class="contenedor">
+            <div class="logo">
+                <img src="assets/images/logo.svg" alt="Patitas Felices" />
+                <span class="logo-texto">Patitas Felices</span>
+            </div>
+            
+            <div class="enlaces-nav">
+                <a href="index.html" class="enlace">Inicio</a>
+                <a href="adoptar.html" class="enlace">Adoptar</a>
+                <a href="mis-solicitudes.html" class="enlace">Mis solicitudes</a>
+                <div class="usuario-menu">
+                    <span class="usuario-nombre">Juan Pérez</span>
+                    <button class="btn btn-outline btn-pequeno" id="cerrarSesion">Cerrar sesión</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="perfil-contenedor">
+        <div class="contenedor">
+            <h1 class="perfil-titulo">Mi Perfil</h1>
+
+            <div class="perfil-grid">
+                <!-- informacion personal -->
+                <div class="perfil-seccion">
+                    <h2>Información personal (RF2.1)</h2>
+                    
+                    <form class="formulario-perfil" id="perfilForm">
+                        <div class="grupo-formulario">
+                            <label for="nombre">Nombre completo</label>
+                            <input type="text" id="nombre" name="nombre" value="Juan Pérez" />
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" value="juan@email.com" readonly disabled />
+                            <small>No se puede cambiar el correo</small>
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" value="123-456-7890" />
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="direccion">Dirección</label>
+                            <input type="text" id="direccion" name="direccion" value="Calle Principal 123" />
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="fechaNacimiento">Fecha de nacimiento</label>
+                            <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="1990-01-01" />
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="ocupacion">Ocupación</label>
+                            <input type="text" id="ocupacion" name="ocupacion" value="Ingeniero" />
+                        </div>
+
+                        <button type="submit" class="btn btn-primario">Guardar cambios</button>
+                    </form>
+                </div>
+
+                <!-- preferencias y otros datos -->
+                <div class="perfil-seccion">
+                    <h2>Preferencias de adopción</h2>
+                    
+                    <form class="formulario-perfil">
+                        <div class="grupo-formulario">
+                            <label>Especies de interés</label>
+                            <div class="opciones-checkbox">
+                                <label><input type="checkbox" checked /> Perros</label>
+                                <label><input type="checkbox" /> Gatos</label>
+                                <label><input type="checkbox" /> Conejos</label>
+                            </div>
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label>Tamaño preferido</label>
+                            <div class="opciones-checkbox">
+                                <label><input type="checkbox" checked /> Pequeño</label>
+                                <label><input type="checkbox" checked /> Mediano</label>
+                                <label><input type="checkbox" /> Grande</label>
+                            </div>
+                        </div>
+
+                        <div class="grupo-formulario">
+                            <label for="experiencia">Experiencia con mascotas</label>
+                            <textarea id="experiencia" rows="3">He tenido perros toda mi vida</textarea>
+                        </div>
+
+                        <button class="btn btn-secundario">Guardar preferencias</button>
+                    </form>
+
+                    <!-- cambiar contraseña -->
+                    <div class="cambiar-password">
+                        <h3>Cambiar contraseña</h3>
+                        <form>
+                            <div class="grupo-formulario">
+                                <label for="passwordActual">Contraseña actual</label>
+                                <input type="password" id="passwordActual" />
+                            </div>
+                            <div class="grupo-formulario">
+                                <label for="passwordNueva">Nueva contraseña</label>
+                                <input type="password" id="passwordNueva" />
+                            </div>
+                            <div class="grupo-formulario">
+                                <label for="passwordConfirmar">Confirmar contraseña</label>
+                                <input type="password" id="passwordConfirmar" />
+                            </div>
+                            <button class="btn btn-outline">Actualizar contraseña</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

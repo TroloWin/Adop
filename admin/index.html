@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel Administrador | Patitas Felices</title>
+    <link rel="stylesheet" href="../css/estilos-admin.css" />
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- sidebar administrador -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-logo">
+                <img src="../assets/images/logo.svg" alt="Patitas Felices" />
+                <span>Admin Panel</span>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="index.html" class="activo">Dashboard</a>
+                <a href="mascotas.html">Mascotas</a>
+                <a href="solicitudes.html">Solicitudes</a>
+                <a href="usuarios.html">Usuarios</a>
+                <a href="../index.html">Ver sitio</a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <span>Admin: Carlos López</span>
+                <button class="btn-cerrar">Cerrar sesión</button>
+            </div>
+        </aside>
+
+        <!-- contenido principal admin -->
+        <main class="admin-contenido">
+            <header class="admin-header">
+                <h1>Dashboard</h1>
+                <div class="header-fecha">16/01/2024</div>
+            </header>
+
+            <!-- tarjetas resumen -->
+            <div class="dashboard-tarjetas">
+                <div class="tarjeta-resumen">
+                    <h3>Mascotas totales</h3>
+                    <span class="numero">45</span>
+                    <span class="etiqueta">+3 esta semana</span>
+                </div>
+                <div class="tarjeta-resumen">
+                    <h3>Solicitudes pendientes</h3>
+                    <span class="numero">12</span>
+                    <span class="etiqueta">RF4.4 - Revisar</span>
+                </div>
+                <div class="tarjeta-resumen">
+                    <h3>Usuarios registrados</h3>
+                    <span class="numero">156</span>
+                    <span class="etiqueta">RF5.2 - Gestionar</span>
+                </div>
+                <div class="tarjeta-resumen">
+                    <h3>Adopciones exitosas</h3>
+                    <span class="numero">89</span>
+                    <span class="etiqueta">Este mes: 12</span>
+                </div>
+            </div>
+
+            <!-- acciones rapidas -->
+            <div class="acciones-rapidas">
+                <h2>Acciones rápidas</h2>
+                <div class="botones-accion">
+                    <a href="mascota-nueva.html" class="btn-accion">+ Nueva mascota (RF3.2)</a>
+                    <a href="solicitudes.html?pendientes" class="btn-accion">📋 Revisar solicitudes (RF4.4)</a>
+                    <a href="usuarios.html" class="btn-accion">👥 Gestionar usuarios (RF5.2)</a>
+                </div>
+            </div>
+
+            <!-- ultimas solicitudes -->
+            <div class="tabla-reciente">
+                <h2>Últimas solicitudes recibidas (RF4.4)</h2>
+                <table class="tabla-admin">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Adoptante</th>
+                            <th>Mascota</th>
+                            <th>Fecha (RF4.3)</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>María González</td>
+                            <td>Luna</td>
+                            <td>15/01/2024 14:30</td>
+                            <td><span class="estado-badge pendiente">Pendiente</span></td>
+                            <td>
+                                <a href="solicitud-revisar.html?id=1" class="btn-tabla">Revisar</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>Juan Pérez</td>
+                            <td>Max</td>
+                            <td>14/01/2024 09:15</td>
+                            <td><span class="estado-badge pendiente">Pendiente</span></td>
+                            <td>
+                                <a href="solicitud-revisar.html?id=2" class="btn-tabla">Revisar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/admin.js"></script>
+</body>
+</html>
