@@ -11,56 +11,271 @@
 <!-- HEADER -->
 <header>
     <div class="video-logo">
-        <img src="assets/daioh.gif" />
+        <img src="assets/daioh.gif" alt="Logo" />
     </div>
 
     <nav>
-        <a>Donadores</a>
-        <a>Nosotros</a>
-        <a>Login</a>
+        <a href="index.html">Inicio</a>
+        <a href="donadores.html">Donadores</a>
+        <a href="contactos.html" class="active">Contactos</a>
+        <a href="login.html">Login</a>
 
         <div class="video-login">
-            <img src="assets/daioh.gif" />
+            <img src="assets/daioh.gif" alt="Login" />
         </div>
     </nav>
 </header>
 
 <!-- CONTACTOS -->
 <section class="contactos-section">
-
-    <h2 class="titulo-contactos">Contactos</h2>
+    <h2 class="titulo-contactos">
+        <div class="icono-titulo"><img src="assets/daioh.gif" alt="Contactos" /></div>
+        Contactos
+    </h2>
 
     <div class="contactos-layout">
-
-        <!-- TEXTOS -->
+        <!-- INFORMACIÓN DE CONTACTO -->
         <div class="info-contacto">
-            <p><strong>Ubicación</strong><br/>Av. Ejemplo 123, Ciudad</p>
+            <h3>Información de Contacto</h3>
+            
+            <div class="contacto-item">
+                <div class="icono-contacto">📍</div>
+                <div>
+                    <strong>Ubicación</strong><br/>
+                    Av. Ejemplo 123, Ciudad, CP 00000
+                </div>
+            </div>
 
-            <p><strong>Número telefónico</strong><br/>+52 555 555 5555</p>
+            <div class="contacto-item">
+                <div class="icono-contacto">📞</div>
+                <div>
+                    <strong>Teléfono</strong><br/>
+                    +52 555 555 5555
+                </div>
+            </div>
 
-            <p><strong>Correo</strong><br/>contacto@ejemplo.com</p>
+            <div class="contacto-item">
+                <div class="icono-contacto">✉️</div>
+                <div>
+                    <strong>Correo Electrónico</strong><br/>
+                    contacto@adopciones.com
+                </div>
+            </div>
 
-            <p><strong>Redes</strong></p>
+            <div class="contacto-item">
+                <div class="icono-contacto">🕒</div>
+                <div>
+                    <strong>Horario de Atención</strong><br/>
+                    Lunes a Viernes: 9:00 - 18:00<br/>
+                    Sábados: 10:00 - 14:00
+                </div>
+            </div>
 
-            <div class="iconos-redes">
-                <div class="icono"><img src="assets/daioh.gif" /></div>
-                <div class="icono"><img src="assets/daioh.gif" /></div>
-                <div class="icono"><img src="assets/daioh.gif" /></div>
-                <div class="icono"><img src="assets/daioh.gif" /></div>
+            <div class="redes-sociales">
+                <strong>Síguenos en redes sociales:</strong>
+                <div class="iconos-redes">
+                    <div class="icono-red"><img src="assets/daioh.gif" alt="Facebook" /></div>
+                    <div class="icono-red"><img src="assets/daioh.gif" alt="Instagram" /></div>
+                    <div class="icono-red"><img src="assets/daioh.gif" alt="Twitter" /></div>
+                    <div class="icono-red"><img src="assets/daioh.gif" alt="YouTube" /></div>
+                </div>
             </div>
         </div>
 
-        <!-- IMAGEN GRANDE -->
-        <div class="contenedor-mapa">
-            <img src="assets/daioh.gif" />
-        </div>
+        <!-- CRUD DE CONTACTOS -->
+        <div class="crud-section">
+            <h3>Administrar Contactos</h3>
+            
+            <!-- Formulario para agregar/editar -->
+            <div class="formulario-crud">
+                <h4 id="form-title">Agregar Nuevo Contacto</h4>
+                <form id="contact-form">
+                    <input type="hidden" id="contact-id">
+                    
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" placeholder="Nombre completo" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" placeholder="correo@ejemplo.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" id="telefono" placeholder="+52 555 555 5555">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje/Nota:</label>
+                        <textarea id="mensaje" placeholder="Motivo del contacto..." rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button type="button" id="btn-cancelar" style="display: none;">Cancelar</button>
+                        <button type="submit" id="btn-guardar">Guardar Contacto</button>
+                    </div>
+                </form>
+            </div>
 
+            <!-- Lista de contactos existentes -->
+            <div class="lista-contactos">
+                <h4>Contactos Registrados</h4>
+                <div id="contactos-container">
+                    <!-- Los contactos se agregarán dinámicamente aquí -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAPA/IMAGEN -->
+    <div class="contenedor-mapa">
+        <img src="assets/daioh.gif" alt="Mapa de ubicación" />
+        <div class="mapa-info">Refugios aqui</div>
     </div>
 
 </section>
 
-</body>
+<script>
+// Base de datos local de contactos
+let contactos = JSON.parse(localStorage.getItem('contactos')) || [];
+let editandoId = null;
 
+// Elementos del DOM
+const form = document.getElementById('contact-form');
+const contactosContainer = document.getElementById('contactos-container');
+const btnCancelar = document.getElementById('btn-cancelar');
+const formTitle = document.getElementById('form-title');
+
+// Inicializar la lista
+function init() {
+    renderContactos();
+    setupEventListeners();
+}
+
+// Configurar event listeners
+function setupEventListeners() {
+    form.addEventListener('submit', handleFormSubmit);
+    btnCancelar.addEventListener('click', cancelarEdicion);
+}
+
+// Manejar envío del formulario
+function handleFormSubmit(e) {
+    e.preventDefault();
+    
+    const contacto = {
+        id: editandoId || Date.now(),
+        nombre: document.getElementById('nombre').value,
+        email: document.getElementById('email').value,
+        telefono: document.getElementById('telefono').value,
+        mensaje: document.getElementById('mensaje').value,
+        fecha: new Date().toLocaleDateString()
+    };
+    
+    if (editandoId) {
+        // Actualizar contacto existente
+        const index = contactos.findIndex(c => c.id === editandoId);
+        if (index !== -1) {
+            contactos[index] = contacto;
+        }
+        editandoId = null;
+        btnCancelar.style.display = 'none';
+        formTitle.textContent = 'Agregar Nuevo Contacto';
+    } else {
+        // Agregar nuevo contacto
+        contactos.push(contacto);
+    }
+    
+    // Guardar en localStorage
+    localStorage.setItem('contactos', JSON.stringify(contactos));
+    
+    // Actualizar lista
+    renderContactos();
+    
+    // Resetear formulario
+    form.reset();
+    document.getElementById('contact-id').value = '';
+    
+    // Mostrar mensaje de confirmación
+    alert(editandoId ? 'Contacto actualizado correctamente' : 'Contacto agregado correctamente');
+}
+
+// Renderizar lista de contactos
+function renderContactos() {
+    contactosContainer.innerHTML = '';
+    
+    if (contactos.length === 0) {
+        contactosContainer.innerHTML = '<p class="no-contactos">No hay contactos registrados.</p>';
+        return;
+    }
+    
+    contactos.forEach(contacto => {
+        const contactoElement = document.createElement('div');
+        contactoElement.className = 'contacto-item-lista';
+        contactoElement.innerHTML = `
+            <div class="contacto-info">
+                <strong>${contacto.nombre}</strong>
+                <div class="contacto-detalles">
+                    <span>📧 ${contacto.email}</span>
+                    <span>📞 ${contacto.telefono || 'No especificado'}</span>
+                    <span>📅 ${contacto.fecha}</span>
+                </div>
+                <p class="contacto-mensaje">${contacto.mensaje || 'Sin mensaje'}</p>
+            </div>
+            <div class="contacto-acciones">
+                <button class="btn-editar" onclick="editarContacto(${contacto.id})">✏️ Editar</button>
+                <button class="btn-eliminar" onclick="eliminarContacto(${contacto.id})">🗑️ Eliminar</button>
+            </div>
+        `;
+        contactosContainer.appendChild(contactoElement);
+    });
+}
+
+// Editar contacto
+function editarContacto(id) {
+    const contacto = contactos.find(c => c.id === id);
+    if (!contacto) return;
+    
+    editandoId = id;
+    document.getElementById('contact-id').value = id;
+    document.getElementById('nombre').value = contacto.nombre;
+    document.getElementById('email').value = contacto.email;
+    document.getElementById('telefono').value = contacto.telefono;
+    document.getElementById('mensaje').value = contacto.mensaje;
+    
+    formTitle.textContent = 'Editar Contacto';
+    btnCancelar.style.display = 'inline-block';
+    
+    // Scroll al formulario
+    document.querySelector('.formulario-crud').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Eliminar contacto
+function eliminarContacto(id) {
+    if (confirm('¿Estás seguro de eliminar este contacto?')) {
+        contactos = contactos.filter(c => c.id !== id);
+        localStorage.setItem('contactos', JSON.stringify(contactos));
+        renderContactos();
+        
+        if (editandoId === id) {
+            cancelarEdicion();
+        }
+    }
+}
+
+// Cancelar edición
+function cancelarEdicion() {
+    editandoId = null;
+    form.reset();
+    document.getElementById('contact-id').value = '';
+    btnCancelar.style.display = 'none';
+    formTitle.textContent = 'Agregar Nuevo Contacto';
+}
+
+// Inicializar al cargar la página
+document.addEventListener('DOMContentLoaded', init);
+</script>
 
 <style>
 body {
@@ -126,55 +341,283 @@ nav a:hover {
     background: rgba(0, 0, 0, 0.1);
 }
 
-/* CONTACTOS */
+nav a.active {
+    background: rgba(0, 0, 0, 0.15);
+    font-weight: bold;
+}
+
+/* CONTACTOS SECTION */
 .contactos-section {
     padding: 40px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .titulo-contactos {
-    font-size: 32px;
-    margin-bottom: 20px;
-}
-
-.contactos-layout {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 40px;
-}
-
-.info-contacto p {
-    font-size: 18px;
-    margin-bottom: 18px;
-}
-
-.iconos-redes {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 15px;
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #333;
 }
 
-.icono {
-    width: 40px;
-    height: 40px;
-    border: 2px solid #bfbfbf;
+.icono-titulo {
+    width: 50px;
+    height: 50px;
     border-radius: 6px;
     overflow: hidden;
-    background: #e3e3e3;
+    background: black;
+    border: 2px solid #bfbfbf;
 }
 
-.icono img {
+.icono-titulo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-/* MAPA / IMAGEN */
+.contactos-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+/* INFORMACIÓN DE CONTACTO */
+.info-contacto {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    border: 2px solid #bfbfbf;
+}
+
+.info-contacto h3 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 2px solid #d7cff7;
+    padding-bottom: 10px;
+}
+
+.contacto-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.icono-contacto {
+    font-size: 24px;
+    flex-shrink: 0;
+    width: 40px;
+    text-align: center;
+}
+
+.redes-sociales {
+    margin-top: 30px;
+}
+
+.iconos-redes {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.icono-red {
+    width: 45px;
+    height: 45px;
+    border: 2px solid #bfbfbf;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #e3e3e3;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.icono-red:hover {
+    transform: scale(1.1);
+}
+
+.icono-red img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* CRUD SECTION */
+.crud-section {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    border: 2px solid #bfbfbf;
+}
+
+.crud-section h3 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 2px solid #d7cff7;
+    padding-bottom: 10px;
+}
+
+.formulario-crud {
+    background: #f8f8ff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid #ddd;
+}
+
+.formulario-crud h4 {
+    margin-top: 0;
+    color: #555;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #bfbfbf;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#btn-guardar {
+    background: #4CAF50;
+    color: white;
+}
+
+#btn-guardar:hover {
+    background: #45a049;
+}
+
+#btn-cancelar {
+    background: #f44336;
+    color: white;
+}
+
+#btn-cancelar:hover {
+    background: #d32f2f;
+}
+
+/* LISTA DE CONTACTOS */
+.lista-contactos h4 {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.contacto-item-lista {
+    background: #f8f8ff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.contacto-info {
+    flex: 1;
+}
+
+.contacto-detalles {
+    display: flex;
+    gap: 15px;
+    margin: 8px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.contacto-mensaje {
+    color: #777;
+    font-style: italic;
+    margin: 10px 0 0 0;
+    padding-top: 10px;
+    border-top: 1px dashed #ddd;
+}
+
+.contacto-acciones {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-editar, .btn-eliminar {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-editar {
+    background: #2196F3;
+    color: white;
+}
+
+.btn-editar:hover {
+    background: #1976D2;
+}
+
+.btn-eliminar {
+    background: #ff4444;
+    color: white;
+}
+
+.btn-eliminar:hover {
+    background: #cc0000;
+}
+
+.no-contactos {
+    text-align: center;
+    color: #777;
+    padding: 20px;
+    background: #f8f8ff;
+    border-radius: 8px;
+    border: 1px dashed #ddd;
+}
+
+/* MAPA */
 .contenedor-mapa {
     width: 100%;
-    height: 380px;
-    border-radius: 6px;
+    height: 350px;
+    border-radius: 10px;
     border: 3px solid #1e70ff;
     overflow: hidden;
     background: black;
+    margin-top: 20px;
+    position: relative;
 }
 
 .contenedor-mapa img {
@@ -183,10 +626,56 @@ nav a:hover {
     object-fit: cover;
 }
 
+.mapa-info {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #333;
+}
+
 /* RESPONSIVE */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     .contactos-layout {
         grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .contactos-section {
+        padding: 20px 30px;
+    }
+    
+    header {
+        padding: 15px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contacto-item-lista {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .contacto-acciones {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    
+    .contacto-detalles {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .titulo-contactos {
+        font-size: 28px;
+    }
+    
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
 </style>

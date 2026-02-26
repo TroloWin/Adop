@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Donadores</title>
+</head>
+<body>
+
+<header>
+    <div class="video-logo">
+        <img src="assets/daioh.gif" alt="Logo" />
+    </div>
+
+    <!-- Menú con GIF de login a la derecha -->
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="donadores.html">Donadores</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="login.html">Login</a>
+        
+        <!-- GIF login (como en index.html) -->
+        <div class="video-login">
+            <img src="assets/daioh.gif" alt="Login" />
+        </div>
+    </nav>
+</header>
+
+<section class="contenedor">
+    <div class="titulo">
+        <div class="video-titulo"><img src="assets/daioh.gif" alt="Donadores" /></div>
+        Donadores
+    </div>
+
+    <div class="lista-donadores">
+        <div class="tarjeta">
+            <img src="assets/daioh.gif" alt="Juan Pérez" />
+            <div class="info">Juan Pérez — $500</div>
+        </div>
+
+        <div class="tarjeta">
+            <img src="assets/daioh.gif" alt="Ana López" />
+            <div class="info">Ana López — $300</div>
+        </div>
+
+        <div class="tarjeta">
+            <img src="assets/daioh.gif" alt="Carlos Ramos" />
+            <div class="info">Carlos Ramos — $1000</div>
+        </div>
+
+        <div class="tarjeta">
+            <img src="assets/daioh.gif" alt="Fundación Amigos" />
+            <div class="info">Fundación Amigos — $2500</div>
+        </div>
+        
+        <!-- Puedes agregar más donadores aquí -->
+        <div class="tarjeta">
+            <img src="assets/daioh.gif" alt="María González" />
+            <div class="info">María González — $200</div>
+        </div>
+        
+        <div class="tarjeta">
+            <img src="assets/daioh.gif" alt="Empresa Solidaria" />
+            <div class="info">Empresa Solidaria — $1500</div>
+        </div>
+    </div>
+
+</section>
+
+</body>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #d7cff7;
+    }
+
+    /* Header (igual al index.html) */
+    header {
+        width: 100%;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .video-logo {
+        width: 160px;
+        height: 60px;
+        overflow: hidden;
+        border-radius: 6px;
+        border: 2px solid #bfbfbf;
+        background: black;
+    }
+
+    .video-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* GIF login (igual al index.html) */
+    .video-login {
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        border-radius: 50%;
+        border: 2px solid #bfbfbf;
+        background: black;
+        margin-left: 10px;
+    }
+
+    .video-login img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    nav a {
+        text-decoration: none;
+        cursor: pointer;
+        color: black;
+        padding: 6px 10px;
+        border-radius: 8px;
+        transition: 0.2s;
+    }
+
+    nav a:hover {
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    /* Contenedor general */
+    .contenedor {
+        padding: 20px 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .titulo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    .video-titulo {
+        width: 40px;
+        height: 40px;
+        border-radius: 6px;
+        overflow: hidden;
+        background: black;
+        border: 2px solid #bfbfbf;
+        flex-shrink: 0;
+    }
+
+    .video-titulo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Tarjetas */
+    .lista-donadores {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+        gap: 20px;
+    }
+
+    .tarjeta {
+        background: white;
+        border: 2px solid #bfbfbf;
+        border-radius: 10px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .tarjeta:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .tarjeta img {
+        width: 90px;
+        height: 90px;
+        border-radius: 10px;
+        object-fit: cover;
+        background: black;
+        border: 2px solid #bfbfbf;
+        flex-shrink: 0;
+    }
+
+    .info {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .lista-donadores {
+            grid-template-columns: 1fr;
+        }
+        
+        header {
+            padding: 15px 20px;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .contenedor {
+            padding: 15px 20px;
+        }
+        
+        .tarjeta {
+            flex-direction: column;
+            text-align: center;
+            gap: 15px;
+        }
+    }
+</style>
+
+</html>
