@@ -3,173 +3,99 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adoptar Mascota | Patitas Felices</title>
+    <title>Adoptar | Patitas Felices</title>
     <link rel="stylesheet" href="css/estilos.css" />
 </head>
 <body>
     <nav class="navegacion">
         <div class="contenedor">
             <div class="logo">
-                <img src="assets/images/logo.svg" alt="Patitas Felices" />
+                <img src="assets/images/logo.png" alt="Patitas Felices" />
                 <span class="logo-texto">Patitas Felices</span>
             </div>
-            
             <div class="enlaces-nav">
                 <a href="index.html" class="enlace">Inicio</a>
                 <a href="adoptar.html" class="enlace activo">Adoptar</a>
                 <a href="donadores.html" class="enlace">Donadores</a>
                 <a href="nosotros.html" class="enlace">Nosotros</a>
-                <a href="login.html" class="btn btn-outline">Iniciar Sesión</a>
+                <button onclick="cerrarSesion()" class="btn btn-outline" id="btnCerrarSesion">Cerrar Sesión</button>
             </div>
         </div>
     </nav>
 
     <main>
-        <!-- encabezado pagina -->
         <section class="encabezado-pagina">
             <div class="contenedor">
-                <h1>Encuentra tu compañero ideal</h1>
-                <p>Filtra y busca entre nuestras mascotas disponibles</p>
+                <h1>Bienvenido, <span id="nombreUsuario">Usuario</span></h1>
+                <p>Estos son los usuarios autorizados en el sistema</p>
             </div>
         </section>
 
-        <!-- filtros (RF3.6, RF3.7) -->
-        <section class="filtros-seccion">
+        <section class="seccion">
             <div class="contenedor">
-                <div class="filtros-contenedor">
-                    <h3>Filtros de búsqueda</h3>
-                    <div class="filtros-grid">
-                        <div class="filtro-grupo">
-                            <label for="especie">Especie (RF3.6)</label>
-                            <select id="especie">
-                                <option value="">Todas</option>
-                                <option value="perro">Perro</option>
-                                <option value="gato">Gato</option>
-                                <option value="conejo">Conejo</option>
-                                <option value="ave">Ave</option>
-                            </select>
-                        </div>
-
-                        <div class="filtro-grupo">
-                            <label for="edad">Edad (RF3.7)</label>
-                            <select id="edad">
-                                <option value="">Todas</option>
-                                <option value="cachorro">Cachorro (0-1 año)</option>
-                                <option value="joven">Joven (1-3 años)</option>
-                                <option value="adulto">Adulto (3-7 años)</option>
-                                <option value="mayor">Mayor (7+ años)</option>
-                            </select>
-                        </div>
-
-                        <div class="filtro-grupo">
-                            <label for="tamano">Tamaño (RF3.7)</label>
-                            <select id="tamano">
-                                <option value="">Todos</option>
-                                <option value="pequeno">Pequeño</option>
-                                <option value="mediano">Mediano</option>
-                                <option value="grande">Grande</option>
-                            </select>
-                        </div>
-
-                        <div class="filtro-grupo">
-                            <label for="estado">Estado (RF3.7)</label>
-                            <select id="estado">
-                                <option value="disponible" selected>Disponible</option>
-                                <option value="proceso">En proceso</option>
-                                <option value="adoptado">Adoptado</option>
-                                <option value="todos">Todos</option>
-                            </select>
-                        </div>
-
-                        <div class="filtro-grupo botones">
-                            <button class="btn btn-primario" id="aplicarFiltros">Aplicar filtros</button>
-                            <button class="btn btn-outline" id="limpiarFiltros">Limpiar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- resultados busqueda -->
-        <section class="resultados-seccion">
-            <div class="contenedor">
-                <div class="resultados-header">
-                    <h2>Mascotas disponibles (RF3.8)</h2>
-                    <span class="resultados-count">24 resultados</span>
-                </div>
-
-                <div class="mascotas-grid">
-                    <!-- mascota 1 - disponible -->
-                    <div class="mascota-tarjeta">
-                        <div class="mascota-imagen">
-                            <img src="assets/images/default-pet.svg" alt="Mascota" />
-                            <span class="mascota-etiqueta disponible">Disponible</span>
-                        </div>
-                        <div class="mascota-info">
-                            <h3 class="mascota-nombre">Max</h3>
-                            <div class="mascota-detalles">
-                                <span class="detalle">2 años</span>
-                                <span class="detalle">Perro</span>
-                                <span class="detalle">Mediano</span>
-                            </div>
-                            <p class="mascota-descripcion">Amigable y juguetón, se lleva bien con niños y otros perros.</p>
-                            <a href="mascota-detalle.html?id=4" class="btn btn-secundario btn-bloque">Ver detalle</a>
-                        </div>
-                    </div>
-
-                    <!-- mascota 2 - en proceso -->
-                    <div class="mascota-tarjeta">
-                        <div class="mascota-imagen">
-                            <img src="assets/images/default-pet.svg" alt="Mascota" />
-                            <span class="mascota-etiqueta proceso">En proceso</span>
-                        </div>
-                        <div class="mascota-info">
-                            <h3 class="mascota-nombre">Mia</h3>
-                            <div class="mascota-detalles">
-                                <span class="detalle">1 año</span>
-                                <span class="detalle">Gato</span>
-                                <span class="detalle">Pequeño</span>
-                            </div>
-                            <p class="mascota-descripcion">Cariñosa y tranquila, busca un hogar sin otros animales.</p>
-                            <a href="mascota-detalle.html?id=5" class="btn btn-secundario btn-bloque">Ver detalle</a>
-                        </div>
-                    </div>
-
-                    <!-- mascota 3 - adoptado -->
-                    <div class="mascota-tarjeta">
-                        <div class="mascota-imagen">
-                            <img src="assets/images/default-pet.svg" alt="Mascota" />
-                            <span class="mascota-etiqueta adoptado">Adoptado</span>
-                        </div>
-                        <div class="mascota-info">
-                            <h3 class="mascota-nombre">Rex</h3>
-                            <div class="mascota-detalles">
-                                <span class="detalle">4 años</span>
-                                <span class="detalle">Perro</span>
-                                <span class="detalle">Grande</span>
-                            </div>
-                            <p class="mascota-descripcion">Leal y protector, ideal para casa con jardín.</p>
-                            <a href="mascota-detalle.html?id=6" class="btn btn-secundario btn-bloque">Ver detalle</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- paginacion -->
-                <div class="paginacion">
-                    <button class="btn btn-outline" disabled>Anterior</button>
-                    <span class="pagina-actual">1</span>
-                    <span class="pagina-separador">de</span>
-                    <span class="pagina-total">5</span>
-                    <button class="btn btn-outline">Siguiente</button>
-                </div>
+                <h2>Usuarios registrados en Firebase</h2>
+                <table class="tabla-simple" id="tablaUsuarios">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Nombre</th>
+                            <th>Rol</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoTabla">
+                        <tr><td colspan="3">Cargando usuarios...</td></tr>
+                    </tbody>
+                </table>
             </div>
         </section>
     </main>
 
-    <footer class="pie-pagina">
-        <!-- mismo footer que index -->
-    </footer>
-
-    <script src="js/mascotas.js"></script>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    
+    <!-- Tus archivos JS -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    
+    <script>
+        // Verificar autenticación
+        auth.onAuthStateChanged(async (user) => {
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Obtener datos del usuario
+            const userDoc = await db.collection('usuarios').doc(user.uid).get();
+            const userData = userDoc.data();
+            
+            // Mostrar nombre
+            document.getElementById('nombreUsuario').textContent = userData.nombre || 'Usuario';
+            
+            // Cargar lista de usuarios
+            cargarUsuarios();
+        });
+        
+        async function cargarUsuarios() {
+            const snapshot = await db.collection('usuarios').get();
+            const usuarios = [];
+            snapshot.forEach(doc => usuarios.push(doc.data()));
+            
+            const tbody = document.getElementById('cuerpoTabla');
+            tbody.innerHTML = usuarios.map(u => `
+                <tr>
+                    <td>${u.email}</td>
+                    <td>${u.nombre || '—'}</td>
+                    <td>
+                        <span class="badge ${u.esAdmin ? 'badge-admin' : 'badge-user'}">
+                            ${u.esAdmin ? 'Administrador' : 'Adoptante'}
+                        </span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro Exitoso | Patitas Felices</title>
+    <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+    <nav class="navegacion">
+        <div class="contenedor">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="Patitas Felices" />
+                <span class="logo-texto">Patitas Felices</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="contenedor-formulario">
+        <div class="tarjeta-formulario" style="text-align: center;">
+            <img src="assets/icons/check.svg" alt="Éxito" style="width: 80px; height: 80px; margin-bottom: 20px;" />
+            
+            <h1>¡Registro exitoso!</h1>
+            
+            <p style="font-size: 1.1rem; margin: 20px 0;">
+                Te hemos enviado un correo de verificación a:
+                <strong id="emailUsuario"></strong>
+            </p>
+            
+            <div style="background: #f0f0f0; padding: 15px; border-radius: 10px; margin: 20px 0;">
+                <p>📧 Revisa tu bandeja de entrada y haz clic en el enlace de verificación.</p>
+                <p>✉️ Si no lo encuentras, revisa tu carpeta de spam.</p>
+            </div>
+            
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button onclick="reenviarCorreo()" class="btn btn-outline">Reenviar correo</button>
+                <a href="login.html" class="btn btn-primario">Ir a iniciar sesión</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="js/firebase-config.js"></script>
+    
+    <script>
+        // Mostrar email del usuario
+        const user = auth.currentUser;
+        if (user) {
+            document.getElementById('emailUsuario').textContent = user.email;
+        }
+
+        async function reenviarCorreo() {
+            try {
+                await user.sendEmailVerification();
+                alert('✅ Correo reenviado. Revisa tu bandeja de entrada.');
+            } catch (error) {
+                alert('❌ Error: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>

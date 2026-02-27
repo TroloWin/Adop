@@ -8,7 +8,27 @@
 </head>
 <body>
     <nav class="navegacion">
-        <!-- mismo nav que en adoptar -->
+        <div class="contenedor">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="Patitas Felices" />
+                <span class="logo-texto">Patitas Felices</span>
+            </div>
+            
+            <div class="enlaces-nav">
+                <a href="index.html" class="enlace">
+                    <img src="assets/icons/home.svg" alt="Inicio" class="icono" />
+                    Inicio
+                </a>
+                <a href="adoptar.html" class="enlace">
+                    <img src="assets/icons/search.svg" alt="Adoptar" class="icono" />
+                    Adoptar
+                </a>
+                <a href="login.html" class="btn btn-outline">
+                    <img src="assets/icons/user.svg" alt="Login" class="icono" />
+                    Iniciar Sesión
+                </a>
+            </div>
+        </div>
     </nav>
 
     <main class="detalle-mascota">
@@ -17,16 +37,16 @@
                 <!-- galeria imagenes -->
                 <div class="detalle-imagenes">
                     <div class="imagen-principal">
-                        <img src="assets/images/default-pet.svg" alt="Mascota" />
+                        <img src="assets/images/mascotas/perro-luna.png" alt="Luna" />
                     </div>
                     <div class="imagenes-secundarias">
-                        <img src="assets/images/default-pet.svg" alt="Vista 1" />
-                        <img src="assets/images/default-pet.svg" alt="Vista 2" />
-                        <img src="assets/images/default-pet.svg" alt="Vista 3" />
+                        <img src="assets/images/mascotas/perro-luna-2.png" alt="Luna 2" />
+                        <img src="assets/images/mascotas/perro-luna-3.png" alt="Luna 3" />
+                        <img src="assets/images/mascotas/perro-luna-4.png" alt="Luna 4" />
                     </div>
                 </div>
 
-                <!-- informacion mascota (RF3.1) -->
+                <!-- informacion mascota -->
                 <div class="detalle-info">
                     <div class="detalle-encabezado">
                         <h1>Luna</h1>
@@ -35,9 +55,11 @@
 
                     <div class="detalle-caracteristicas">
                         <div class="caracteristica">
+                            <img src="assets/icons/calendar.svg" alt="Edad" class="icono-detalle" /> <!-- NUEVO ÍCONO -->
                             <strong>Edad:</strong> 2 años
                         </div>
                         <div class="caracteristica">
+                            <img src="assets/icons/dog.svg" alt="Especie" class="icono-detalle" />
                             <strong>Especie:</strong> Perro
                         </div>
                         <div class="caracteristica">
@@ -69,10 +91,16 @@
                         </ul>
                     </div>
 
-                    <!-- boton solicitud (RF4.1) -->
+                    <!-- botones accion -->
                     <div class="detalle-acciones">
-                        <a href="solicitud-detalle.html?mascota=1" class="btn btn-primario btn-grande btn-bloque">Solicitar adopción</a>
-                        <button class="btn btn-outline btn-grande btn-bloque">Contactar</button>
+                        <a href="solicitud-detalle.html?mascota=1" class="btn btn-primario btn-grande btn-bloque">
+                            <img src="assets/icons/heart.svg" alt="Adoptar" class="icono" /> <!-- NUEVO ÍCONO -->
+                            Solicitar adopción
+                        </a>
+                        <button class="btn btn-outline btn-grande btn-bloque">
+                            <img src="assets/icons/email.svg" alt="Contactar" class="icono" />
+                            Contactar
+                        </button>
                     </div>
                 </div>
             </div>
@@ -82,7 +110,5 @@
     <footer class="pie-pagina">
         <!-- mismo footer -->
     </footer>
-
-    <script src="js/mascotas.js"></script>
 </body>
 </html>

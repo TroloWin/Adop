@@ -8,12 +8,39 @@
 </head>
 <body>
     <nav class="navegacion">
-        <!-- mismo nav que en perfil -->
+        <div class="contenedor">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="Patitas Felices" />
+                <span class="logo-texto">Patitas Felices</span>
+            </div>
+            
+            <div class="enlaces-nav">
+                <a href="index.html" class="enlace">
+                    <img src="assets/icons/home.svg" alt="Inicio" class="icono" />
+                    Inicio
+                </a>
+                <a href="adoptar.html" class="enlace">
+                    <img src="assets/icons/search.svg" alt="Adoptar" class="icono" />
+                    Adoptar
+                </a>
+                <a href="mis-solicitudes.html" class="enlace activo">
+                    <img src="assets/icons/pending.svg" alt="Mis solicitudes" class="icono" />
+                    Mis solicitudes
+                </a>
+                <div class="usuario-menu">
+                    <span class="usuario-nombre">Juan Pérez</span>
+                    <button class="btn btn-outline btn-pequeno">
+                        <img src="assets/icons/logout.svg" alt="Cerrar sesión" class="icono" />
+                        Cerrar sesión
+                    </button>
+                </div>
+            </div>
+        </div>
     </nav>
 
     <main class="solicitudes-contenedor">
         <div class="contenedor">
-            <h1>Mis solicitudes de adopción (RF4.2)</h1>
+            <h1>Mis solicitudes de adopción</h1>
             <p class="subtitulo">Consulta el estado de tus solicitudes</p>
 
             <div class="solicitudes-tabs">
@@ -28,12 +55,20 @@
                 <div class="solicitud-tarjeta pendiente">
                     <div class="solicitud-header">
                         <h3>Solicitud para Luna</h3>
-                        <span class="solicitud-estado pendiente">En revisión</span>
+                        <span class="solicitud-estado pendiente">
+                            <img src="assets/icons/pending.svg" alt="Pendiente" class="icono-pequeno" />
+                            En revisión
+                        </span>
                     </div>
                     <div class="solicitud-info">
-                        <p><strong>Mascota:</strong> Luna - Perro, 2 años</p>
-                        <p><strong>Fecha de solicitud (RF4.3):</strong> 15/01/2024 14:30</p>
-                        <p><strong>Última actualización:</strong> 16/01/2024 10:15</p>
+                        <p>
+                            <img src="assets/icons/dog.svg" alt="Mascota" class="icono-pequeno" />
+                            <strong>Mascota:</strong> Luna - Perro, 2 años
+                        </p>
+                        <p>
+                            <img src="assets/icons/calendar.svg" alt="Fecha" class="icono-pequeno" />
+                            <strong>Fecha de solicitud:</strong> 15/01/2024 14:30
+                        </p>
                     </div>
                     <div class="solicitud-acciones">
                         <a href="solicitud-detalle.html?id=1" class="btn btn-secundario btn-pequeno">Ver detalle</a>
@@ -44,16 +79,23 @@
                 <div class="solicitud-tarjeta aprobada">
                     <div class="solicitud-header">
                         <h3>Solicitud para Max</h3>
-                        <span class="solicitud-estado aprobada">Aprobada</span>
+                        <span class="solicitud-estado aprobada">
+                            <img src="assets/icons/check.svg" alt="Aprobada" class="icono-pequeno" /> <!-- NUEVO ÍCONO -->
+                            Aprobada
+                        </span>
                     </div>
                     <div class="solicitud-info">
-                        <p><strong>Mascota:</strong> Max - Perro, 3 años</p>
-                        <p><strong>Fecha de solicitud:</strong> 10/01/2024 09:45</p>
-                        <p><strong>Fecha de aprobación:</strong> 12/01/2024 16:20</p>
+                        <p>
+                            <img src="assets/icons/dog.svg" alt="Mascota" class="icono-pequeno" />
+                            <strong>Mascota:</strong> Max - Perro, 3 años
+                        </p>
+                        <p>
+                            <img src="assets/icons/calendar.svg" alt="Fecha" class="icono-pequeno" />
+                            <strong>Fecha de solicitud:</strong> 10/01/2024 09:45
+                        </p>
                     </div>
                     <div class="solicitud-acciones">
                         <a href="solicitud-detalle.html?id=2" class="btn btn-secundario btn-pequeno">Ver detalle</a>
-                        <button class="btn btn-primario btn-pequeno">Contactar</button>
                     </div>
                 </div>
 
@@ -64,9 +106,14 @@
                         <span class="solicitud-estado rechazada">Rechazada</span>
                     </div>
                     <div class="solicitud-info">
-                        <p><strong>Mascota:</strong> Simba - Gato, 1 año</p>
-                        <p><strong>Fecha de solicitud:</strong> 05/01/2024 11:20</p>
-                        <p><strong>Motivo:</strong> No cumple con los requisitos de espacio</p>
+                        <p>
+                            <img src="assets/icons/cat.svg" alt="Mascota" class="icono-pequeno" />
+                            <strong>Mascota:</strong> Simba - Gato, 1 año
+                        </p>
+                        <p>
+                            <img src="assets/icons/calendar.svg" alt="Fecha" class="icono-pequeno" />
+                            <strong>Fecha de solicitud:</strong> 05/01/2024 11:20
+                        </p>
                     </div>
                     <div class="solicitud-acciones">
                         <a href="solicitud-detalle.html?id=3" class="btn btn-secundario btn-pequeno">Ver detalle</a>
@@ -74,23 +121,21 @@
                 </div>
             </div>
 
-            <!-- notificaciones (RF4.6) -->
+            <!-- notificaciones -->
             <div class="notificaciones-seccion">
                 <h2>Notificaciones recientes</h2>
                 <div class="notificacion">
-                    <span class="notificacion-icono">✓</span>
+                    <img src="assets/icons/check.svg" alt="Aprobada" class="icono" />
                     <p>Tu solicitud para Max ha sido aprobada</p>
                     <small>Hace 2 días</small>
                 </div>
                 <div class="notificacion">
-                    <span class="notificacion-icono">⏳</span>
+                    <img src="assets/icons/pending.svg" alt="Pendiente" class="icono" />
                     <p>Tu solicitud para Luna está en revisión</p>
                     <small>Hace 3 días</small>
                 </div>
             </div>
         </div>
     </main>
-
-    <script src="js/solicitudes.js"></script>
 </body>
 </html>

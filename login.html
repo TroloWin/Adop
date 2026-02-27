@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iniciar Sesión | Patitas Felices</title>
     <link rel="stylesheet" href="css/estilos.css" />
+    <link rel="stylesheet" href="css/estilos-login.css" />
 </head>
 <body>
     <nav class="navegacion">
         <div class="contenedor">
             <div class="logo">
-                <img src="assets/images/logo.svg" alt="Patitas Felices" />
+                <img src="assets/images/logo.png" alt="Patitas Felices" />
                 <span class="logo-texto">Patitas Felices</span>
             </div>
-            
             <div class="enlaces-nav">
                 <a href="index.html" class="enlace">Inicio</a>
                 <a href="adoptar.html" class="enlace">Adoptar</a>
-                <a href="login.html" class="enlace activo">Iniciar Sesión</a>
-                <a href="registro.html" class="btn btn-primario btn-pequeno">Registrarse</a>
+                <a href="donadores.html" class="enlace">Donadores</a>
+                <a href="nosotros.html" class="enlace">Nosotros</a>
             </div>
         </div>
     </nav>
@@ -26,43 +26,67 @@
     <main class="contenedor-formulario">
         <div class="tarjeta-formulario">
             <div class="encabezado-formulario">
-                <h1>Bienvenido de nuevo</h1>
+                <h1>Iniciar Sesión</h1>
                 <p>Ingresa tus credenciales para acceder</p>
             </div>
 
             <form class="formulario" id="loginForm">
                 <div class="grupo-formulario">
                     <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required />
+                    <input type="email" id="email" placeholder="ejemplo@email.com" required />
                 </div>
 
                 <div class="grupo-formulario">
                     <label for="password">Contraseña</label>
-                    <input type="password" id="password" name="password" placeholder="••••••••" required />
+                    <input type="password" id="password" placeholder="••••••••" required />
                 </div>
 
-                <div class="grupo-formulario recordar">
-                    <label class="checkbox">
-                        <input type="checkbox" name="remember" /> Recordarme
-                    </label>
-                    <a href="recuperar-password.html" class="link">¿Olvidaste tu contraseña?</a>
-                </div>
-
-                <button type="submit" class="btn btn-primario btn-bloque">Iniciar Sesión</button>
+                <button type="submit" class="btn btn-primario btn-bloque" id="btnLogin">
+                    Iniciar Sesión
+                </button>
             </form>
 
             <div class="pie-formulario">
-                <p>¿No tienes cuenta? <a href="registro.html" class="link">Regístrate aquí</a></p>
-            </div>
-
-            <div class="acceso-admin">
-                <hr />
-                <p class="texto-centrado">¿Eres administrador?</p>
-                <a href="admin/index.html" class="btn btn-outline btn-bloque">Acceder al Panel Admin</a>
+                <p>¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a></p>
+                <p><a href="recuperar-password.html">¿Olvidaste tu contraseña?</a></p>
             </div>
         </div>
     </main>
 
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    
+    <!-- Configuración -->
+    <script src="js/firebase-config.js"></script>
     <script src="js/auth.js"></script>
+    
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const btnLogin = document.getElementById('btnLogin');
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            btnLogin.disabled = true;
+            btnLogin.textContent = 'Iniciando sesión...';
+            
+            try {
+                const { userData } = await iniciarSesion(email, password);
+                
+                // Redirigir al inicio para TODOS los usuarios
+                window.location.href = 'index.html';
+                
+            } catch (error) {
+                alert(error.message);
+                btnLogin.disabled = false;
+                btnLogin.textContent = 'Iniciar Sesión';
+            }
+        });
+    </script>
 </body>
 </html>

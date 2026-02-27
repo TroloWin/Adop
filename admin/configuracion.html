@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configuración | Admin</title>
+    <link rel="stylesheet" href="../css/estilos-admin.css" />
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <!-- Sidebar igual -->
+        </aside>
+
+        <main class="admin-contenido">
+            <h1>Configuración del Sistema</h1>
+
+            <div class="config-tabs">
+                <button class="config-tab activo" onclick="mostrarConfig('general')">General</button>
+                <button class="config-tab" onclick="mostrarConfig('adopcion')">Adopción</button>
+                <button class="config-tab" onclick="mostrarConfig('notificaciones')">Notificaciones</button>
+                <button class="config-tab" onclick="mostrarConfig('seguridad')">Seguridad</button>
+            </div>
+
+            <div id="configGeneral" class="config-panel activo">
+                <h2>Configuración General</h2>
+                
+                <div class="config-grupo">
+                    <h3>Información del refugio</h3>
+                    <div class="campo-formulario">
+                        <label for="nombreRefugio">Nombre del refugio</label>
+                        <input type="text" id="nombreRefugio" value="Patitas Felices">
+                    </div>
+                    <div class="campo-formulario">
+                        <label for="emailContacto">Email de contacto</label>
+                        <input type="email" id="emailContacto" value="info@patitasfelices.com">
+                    </div>
+                    <div class="campo-formulario">
+                        <label for="telefonoContacto">Teléfono</label>
+                        <input type="tel" id="telefonoContacto" value="123-456-7890">
+                    </div>
+                    <div class="campo-formulario">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" id="direccion" value="Av. Principal 123">
+                    </div>
+                </div>
+
+                <div class="config-grupo">
+                    <h3>Redes sociales</h3>
+                    <div class="campo-formulario">
+                        <label for="facebook">Facebook</label>
+                        <input type="url" id="facebook" placeholder="https://facebook.com/...">
+                    </div>
+                    <div class="campo-formulario">
+                        <label for="instagram">Instagram</label>
+                        <input type="url" id="instagram" placeholder="https://instagram.com/...">
+                    </div>
+                    <div class="campo-formulario">
+                        <label for="twitter">Twitter</label>
+                        <input type="url" id="twitter" placeholder="https://twitter.com/...">
+                    </div>
+                </div>
+            </div>
+
+            <div id="configAdopcion" class="config-panel">
+                <h2>Configuración de Adopciones</h2>
+                
+                <div class="config-grupo">
+                    <h3>Requisitos de adopción</h3>
+                    <div class="campo-formulario">
+                        <label><input type="checkbox" checked> Ser mayor de edad</label>
+                    </div>
+                    <div class="campo-formulario">
+                        <label><input type="checkbox" checked> Comprobante de domicilio</label>
+                    </div>
+                    <div class="campo-formulario">
+                        <label><input type="checkbox" checked> Identificación oficial</label>
+                    </div>
+                </div>
+
+                <div class="config-grupo">
+                    <h3>Límites</h3>
+                    <div class="campo-formulario">
+                        <label for="maxSolicitudes">Máximo de solicitudes por usuario</label>
+                        <input type="number" id="maxSolicitudes" value="3" min="1" max="10">
+                    </div>
+                </div>
+            </div>
+
+            <div class="config-acciones">
+                <button class="btn-primario" onclick="guardarConfig()">Guardar cambios</button>
+                <button class="btn-secundario" onclick="resetearConfig()">Restablecer</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/admin-configuracion.js"></script>
+</body>
+</html>

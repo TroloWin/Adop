@@ -3,114 +3,200 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Panel Administrador | Patitas Felices</title>
+    <title>Dashboard | Panel Admin</title>
     <link rel="stylesheet" href="../css/estilos-admin.css" />
 </head>
 <body>
     <div class="admin-layout">
-        <!-- sidebar administrador -->
+        <!-- Sidebar -->
         <aside class="admin-sidebar">
             <div class="sidebar-logo">
-                <img src="../assets/images/logo.svg" alt="Patitas Felices" />
+                <img src="../assets/images/logo.png" alt="Patitas Felices" />
                 <span>Admin Panel</span>
             </div>
             
             <nav class="sidebar-nav">
-                <a href="index.html" class="activo">Dashboard</a>
-                <a href="mascotas.html">Mascotas</a>
-                <a href="solicitudes.html">Solicitudes</a>
-                <a href="usuarios.html">Usuarios</a>
-                <a href="../index.html">Ver sitio</a>
+                <a href="index.html" class="activo">
+                    <img src="../assets/icons/dashboard.svg" alt="Dashboard" class="icono-sidebar" />
+                    Dashboard
+                </a>
+                <a href="mascotas.html">
+                    <img src="../assets/icons/pets.svg" alt="Mascotas" class="icono-sidebar" />
+                    Mascotas
+                </a>
+                <a href="solicitudes.html">
+                    <img src="../assets/icons/requests.svg" alt="Solicitudes" class="icono-sidebar" />
+                    Solicitudes
+                </a>
+                <a href="usuarios.html">
+                    <img src="../assets/icons/users.svg" alt="Usuarios" class="icono-sidebar" />
+                    Usuarios
+                </a>
+                <a href="configuracion.html">
+                    <img src="../assets/icons/settings.svg" alt="Configuración" class="icono-sidebar" />
+                    Configuración
+                </a>
+                <hr>
+                <a href="../index.html">
+                    <img src="../assets/icons/home.svg" alt="Ver sitio" class="icono-sidebar" />
+                    Ver sitio
+                </a>
             </nav>
             
             <div class="sidebar-footer">
-                <span>Admin: Carlos López</span>
-                <button class="btn-cerrar">Cerrar sesión</button>
+                <div class="admin-info">
+                    <img src="../assets/icons/admin.svg" alt="Admin" class="icono-admin" />
+                    <div>
+                        <span id="adminNombre">Cargando...</span>
+                        <small>Administrador</small>
+                    </div>
+                </div>
+                <button onclick="cerrarSesion()" class="btn-cerrar">
+                    <img src="../assets/icons/logout.svg" alt="Salir" class="icono" />
+                    Cerrar sesión
+                </button>
             </div>
         </aside>
 
-        <!-- contenido principal admin -->
+        <!-- Contenido principal -->
         <main class="admin-contenido">
-            <header class="admin-header">
+            <div class="admin-header">
                 <h1>Dashboard</h1>
-                <div class="header-fecha">16/01/2024</div>
-            </header>
+                <div class="header-fecha" id="fechaActual"></div>
+            </div>
 
-            <!-- tarjetas resumen -->
+            <!-- Tarjetas de resumen -->
             <div class="dashboard-tarjetas">
-                <div class="tarjeta-resumen">
-                    <h3>Mascotas totales</h3>
-                    <span class="numero">45</span>
-                    <span class="etiqueta">+3 esta semana</span>
+                <div class="tarjeta-resumen" id="cardMascotas">
+                    <div class="tarjeta-icono">
+                        <img src="../assets/icons/pets.svg" alt="Mascotas" />
+                    </div>
+                    <div class="tarjeta-info">
+                        <h3>Mascotas totales</h3>
+                        <span class="numero" id="totalMascotas">0</span>
+                        <span class="tendencia positiva" id="tendenciaMascotas">+3 este mes</span>
+                    </div>
                 </div>
-                <div class="tarjeta-resumen">
-                    <h3>Solicitudes pendientes</h3>
-                    <span class="numero">12</span>
-                    <span class="etiqueta">RF4.4 - Revisar</span>
+
+                <div class="tarjeta-resumen" id="cardSolicitudes">
+                    <div class="tarjeta-icono">
+                        <img src="../assets/icons/requests.svg" alt="Solicitudes" />
+                    </div>
+                    <div class="tarjeta-info">
+                        <h3>Solicitudes pendientes</h3>
+                        <span class="numero" id="solicitudesPendientes">0</span>
+                        <span class="tendencia" id="textoSolicitudes">Requieren revisión</span>
+                    </div>
                 </div>
-                <div class="tarjeta-resumen">
-                    <h3>Usuarios registrados</h3>
-                    <span class="numero">156</span>
-                    <span class="etiqueta">RF5.2 - Gestionar</span>
+
+                <div class="tarjeta-resumen" id="cardUsuarios">
+                    <div class="tarjeta-icono">
+                        <img src="../assets/icons/users.svg" alt="Usuarios" />
+                    </div>
+                    <div class="tarjeta-info">
+                        <h3>Usuarios activos</h3>
+                        <span class="numero" id="usuariosActivos">0</span>
+                        <span class="tendencia" id="totalUsuarios">Total: 0</span>
+                    </div>
                 </div>
-                <div class="tarjeta-resumen">
-                    <h3>Adopciones exitosas</h3>
-                    <span class="numero">89</span>
-                    <span class="etiqueta">Este mes: 12</span>
+
+                <div class="tarjeta-resumen" id="cardAdopciones">
+                    <div class="tarjeta-icono">
+                        <img src="../assets/icons/heart.svg" alt="Adopciones" />
+                    </div>
+                    <div class="tarjeta-info">
+                        <h3>Adopciones exitosas</h3>
+                        <span class="numero" id="adopcionesExitosas">0</span>
+                        <span class="tendencia positiva" id="tendenciaAdopciones">+12 este mes</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- acciones rapidas -->
+            <!-- Gráfico de actividad (simulado) -->
+            <div class="grafico-seccion">
+                <h2>Actividad reciente</h2>
+                <div class="grafico-barras" id="graficoActividad">
+                    <!-- Se genera con JS -->
+                </div>
+            </div>
+
+            <!-- Tablas de actividad reciente -->
+            <div class="tablas-grid">
+                <!-- Últimas mascotas agregadas -->
+                <div class="tabla-reciente">
+                    <div class="tabla-header">
+                        <h3>Últimas mascotas agregadas</h3>
+                        <a href="mascotas.html" class="ver-todas">Ver todas →</a>
+                    </div>
+                    <table class="tabla-admin">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Especie</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaMascotasRecientes">
+                            <tr><td colspan="4" class="cargando">Cargando...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Últimas solicitudes -->
+                <div class="tabla-reciente">
+                    <div class="tabla-header">
+                        <h3>Últimas solicitudes</h3>
+                        <a href="solicitudes.html" class="ver-todas">Ver todas →</a>
+                    </div>
+                    <table class="tabla-admin">
+                        <thead>
+                            <tr>
+                                <th>Adoptante</th>
+                                <th>Mascota</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaSolicitudesRecientes">
+                            <tr><td colspan="4" class="cargando">Cargando...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Acciones rápidas -->
             <div class="acciones-rapidas">
                 <h2>Acciones rápidas</h2>
                 <div class="botones-accion">
-                    <a href="mascota-nueva.html" class="btn-accion">+ Nueva mascota (RF3.2)</a>
-                    <a href="solicitudes.html?pendientes" class="btn-accion">📋 Revisar solicitudes (RF4.4)</a>
-                    <a href="usuarios.html" class="btn-accion">👥 Gestionar usuarios (RF5.2)</a>
+                    <a href="mascota-nueva.html" class="btn-accion">
+                        <img src="../assets/icons/add.svg" alt="Agregar" />
+                        <span>Agregar mascota</span>
+                    </a>
+                    <a href="solicitudes.html?pendientes" class="btn-accion">
+                        <img src="../assets/icons/pending.svg" alt="Pendientes" />
+                        <span>Revisar solicitudes</span>
+                    </a>
+                    <a href="usuarios.html" class="btn-accion">
+                        <img src="../assets/icons/users.svg" alt="Usuarios" />
+                        <span>Gestionar usuarios</span>
+                    </a>
+                    <a href="reportes.html" class="btn-accion">
+                        <img src="../assets/icons/report.svg" alt="Reportes" />
+                        <span>Generar reporte</span>
+                    </a>
                 </div>
-            </div>
-
-            <!-- ultimas solicitudes -->
-            <div class="tabla-reciente">
-                <h2>Últimas solicitudes recibidas (RF4.4)</h2>
-                <table class="tabla-admin">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Adoptante</th>
-                            <th>Mascota</th>
-                            <th>Fecha (RF4.3)</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>001</td>
-                            <td>María González</td>
-                            <td>Luna</td>
-                            <td>15/01/2024 14:30</td>
-                            <td><span class="estado-badge pendiente">Pendiente</span></td>
-                            <td>
-                                <a href="solicitud-revisar.html?id=1" class="btn-tabla">Revisar</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>002</td>
-                            <td>Juan Pérez</td>
-                            <td>Max</td>
-                            <td>14/01/2024 09:15</td>
-                            <td><span class="estado-badge pendiente">Pendiente</span></td>
-                            <td>
-                                <a href="solicitud-revisar.html?id=2" class="btn-tabla">Revisar</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </main>
     </div>
 
-    <script src="../js/admin.js"></script>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    
+    <!-- Configuración -->
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/admin-dashboard.js"></script>
 </body>
 </html>

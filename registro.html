@@ -10,68 +10,624 @@
     <nav class="navegacion">
         <div class="contenedor">
             <div class="logo">
-                <img src="assets/images/logo.svg" alt="Patitas Felices" />
+                <img src="assets/images/logo.png" alt="Patitas Felices" />
                 <span class="logo-texto">Patitas Felices</span>
             </div>
-            
             <div class="enlaces-nav">
                 <a href="index.html" class="enlace">Inicio</a>
                 <a href="adoptar.html" class="enlace">Adoptar</a>
-                <a href="login.html" class="enlace">Iniciar Sesión</a>
-                <a href="registro.html" class="enlace activo">Registrarse</a>
+                <a href="donadores.html" class="enlace">Donadores</a>
+                <a href="nosotros.html" class="enlace">Nosotros</a>
+                <a href="login.html" class="btn btn-outline">Iniciar Sesión</a>
             </div>
         </div>
     </nav>
 
     <main class="contenedor-formulario">
-        <div class="tarjeta-formulario">
+        <!-- Formulario de registro -->
+        <div class="tarjeta-formulario" id="formularioRegistro">
             <div class="encabezado-formulario">
                 <h1>Crear cuenta</h1>
-                <p>Completa tus datos para registrarte como adoptante</p>
+                <p>Completa tus datos para registrarte</p>
             </div>
 
-            <form class="formulario" id="registroForm">
+            <!-- Mensaje de error general -->
+            <div id="errorGeneral" class="mensaje-error" style="display: none;"></div>
+
+            <form class="formulario" id="registroForm" novalidate>
                 <div class="grupo-formulario">
                     <label for="nombre">Nombre completo</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Juan Pérez" required />
+                    <input type="text" id="nombre" placeholder="Ej: Samael" required />
+                    <div class="mensaje-error-campo" id="errorNombre"></div>
                 </div>
 
                 <div class="grupo-formulario">
                     <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required />
+                    <input type="email" id="email" placeholder="ejemplo@email.com" required />
+                    <div class="mensaje-error-campo" id="errorEmail"></div>
                 </div>
 
                 <div class="grupo-formulario">
                     <label for="password">Contraseña</label>
-                    <input type="password" id="password" name="password" placeholder="Mínimo 8 caracteres" required />
+                    <input type="password" id="password" placeholder="Mínimo 6 caracteres" required minlength="6" />
+                    <div class="mensaje-error-campo" id="errorPassword"></div>
+                    <div class="requisito-contraseña" id="requisitoLongitud">
+                        <span class="requisito-icono">○</span> Mínimo 6 caracteres
+                    </div>
                 </div>
 
                 <div class="grupo-formulario">
                     <label for="confirmPassword">Confirmar contraseña</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repite tu contraseña" required />
+                    <input type="password" id="confirmPassword" placeholder="Repite tu contraseña" required />
+                    <div class="mensaje-error-campo" id="errorConfirmPassword"></div>
                 </div>
 
-                <div class="grupo-formulario">
-                    <label for="telefono">Teléfono (opcional)</label>
-                    <input type="tel" id="telefono" name="telefono" placeholder="(123) 456-7890" />
-                </div>
-
-                <div class="grupo-formulario">
-                    <label class="checkbox">
-                        <input type="checkbox" name="terminos" required /> 
-                        Acepto los términos y condiciones
+                <div class="grupo-formulario checkbox">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="terminos" required />
+                        <span class="checkmark"></span>
+                        Acepto los <a href="#" id="verTerminos">términos y condiciones</a>
                     </label>
+                    <div class="mensaje-error-campo" id="errorTerminos"></div>
                 </div>
 
-                <button type="submit" class="btn btn-primario btn-bloque">Registrarse</button>
+                <button type="submit" class="btn btn-primario btn-bloque" id="btnRegistro">
+                    Registrarse
+                </button>
             </form>
 
             <div class="pie-formulario">
-                <p>¿Ya tienes cuenta? <a href="login.html" class="link">Inicia sesión aquí</a></p>
+                <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión aquí</a></p>
+            </div>
+        </div>
+
+        <!-- Pantalla de éxito (oculta inicialmente) -->
+        <div class="tarjeta-formulario pantalla-exito" id="pantallaExito" style="display: none;">
+            <div class="icono-exito">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="#9b87f5" stroke-width="2"/>
+                    <path d="M8 12L11 15L16 9" stroke="#9b87f5" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+            
+            <h2>¡Registro completado!</h2>
+            
+            <div class="mensaje-exito">
+                <p>Tu cuenta ha sido creada exitosamente.</p>
+                <p class="email-registrado" id="emailRegistrado"></p>
+            </div>
+
+            <div class="informacion-adicional">
+                <p>Ya puedes iniciar sesión con tu correo y contraseña.</p>
+            </div>
+
+            <div class="acciones-exito">
+                <a href="login.html" class="btn btn-primario">Ir a iniciar sesión</a>
+                <a href="index.html" class="btn btn-outline">Volver al inicio</a>
             </div>
         </div>
     </main>
 
-    <script src="js/auth.js"></script>
+    <!-- Modal de términos y condiciones -->
+    <div id="modalTerminos" class="modal">
+        <div class="modal-contenido">
+            <div class="modal-header">
+                <h2>Términos y condiciones</h2>
+                <button onclick="cerrarModal()" class="cerrar-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <h3>1. Aceptación de términos</h3>
+                <p>Al registrarte en Patitas Felices, aceptas los siguientes términos y condiciones de uso.</p>
+                
+                <h3>2. Responsabilidad del adoptante</h3>
+                <p>Te comprometes a proporcionar los cuidados necesarios a la mascota que adoptes, incluyendo alimentación, vivienda digna, atención veterinaria y afecto.</p>
+                
+                <h3>3. Veracidad de información</h3>
+                <p>La información proporcionada durante el registro y proceso de adopción debe ser verídica y actualizada. Cualquier falsedad puede resultar en la cancelación del proceso.</p>
+                
+                <h3>4. Proceso de adopción</h3>
+                <p>El proceso de adopción incluye una entrevista y posible visita domiciliaria para garantizar el bienestar de la mascota.</p>
+                
+                <h3>5. Compromiso post-adopción</h3>
+                <p>Te comprometes a mantener informado al refugio sobre el estado de la mascota y a contactarnos ante cualquier eventualidad.</p>
+            </div>
+            <div class="modal-footer">
+                <button onclick="cerrarModal()" class="btn btn-primario">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    
+    <script src="js/firebase-config.js"></script>
+    
+    <script>
+        // Elementos del DOM
+        const formularioRegistro = document.getElementById('formularioRegistro');
+        const pantallaExito = document.getElementById('pantallaExito');
+        const registroForm = document.getElementById('registroForm');
+        const btnRegistro = document.getElementById('btnRegistro');
+        const emailRegistrado = document.getElementById('emailRegistrado');
+        
+        // Campos del formulario
+        const nombre = document.getElementById('nombre');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmPassword');
+        const terminos = document.getElementById('terminos');
+        
+        // Elementos de error
+        const errorGeneral = document.getElementById('errorGeneral');
+        const errorNombre = document.getElementById('errorNombre');
+        const errorEmail = document.getElementById('errorEmail');
+        const errorPassword = document.getElementById('errorPassword');
+        const errorConfirmPassword = document.getElementById('errorConfirmPassword');
+        const errorTerminos = document.getElementById('errorTerminos');
+        
+        // Requisito de contraseña
+        const requisitoLongitud = document.getElementById('requisitoLongitud');
+
+        // Mostrar términos
+        document.getElementById('verTerminos').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('modalTerminos').style.display = 'flex';
+        });
+
+        // Función para cerrar modal
+        window.cerrarModal = function() {
+            document.getElementById('modalTerminos').style.display = 'none';
+        };
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalTerminos');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+
+        // Limpiar errores de un campo específico
+        function limpiarErrorCampo(campo) {
+            campo.textContent = '';
+        }
+
+        // Mostrar error en campo específico
+        function mostrarErrorCampo(elementoError, mensaje) {
+            elementoError.textContent = mensaje;
+        }
+
+        // Validar contraseña en tiempo real
+        password.addEventListener('input', function() {
+            const valor = this.value;
+            if (valor.length >= 6) {
+                requisitoLongitud.classList.add('valido');
+                requisitoLongitud.querySelector('.requisito-icono').textContent = '✓';
+                limpiarErrorCampo(errorPassword);
+            } else {
+                requisitoLongitud.classList.remove('valido');
+                requisitoLongitud.querySelector('.requisito-icono').textContent = '○';
+            }
+        });
+
+        // Validar confirmación de contraseña en tiempo real
+        confirmPassword.addEventListener('input', function() {
+            if (this.value === password.value) {
+                this.style.borderColor = 'var(--color-exito)';
+                limpiarErrorCampo(errorConfirmPassword);
+            } else {
+                this.style.borderColor = 'var(--color-error)';
+            }
+        });
+
+        // Validar email en tiempo real
+        email.addEventListener('input', function() {
+            const valor = this.value;
+            if (valor.includes('@') && valor.includes('.')) {
+                this.style.borderColor = 'var(--color-exito)';
+                limpiarErrorCampo(errorEmail);
+            } else {
+                this.style.borderColor = 'var(--color-error)';
+            }
+        });
+
+        // Validar nombre en tiempo real
+        nombre.addEventListener('input', function() {
+            if (this.value.trim().length > 0) {
+                this.style.borderColor = 'var(--color-exito)';
+                limpiarErrorCampo(errorNombre);
+            } else {
+                this.style.borderColor = 'var(--color-error)';
+            }
+        });
+
+        // Validar formulario antes de enviar
+        function validarFormulario() {
+            let isValid = true;
+            let primerError = null;
+
+            // Validar nombre
+            if (!nombre.value.trim()) {
+                mostrarErrorCampo(errorNombre, 'El nombre es obligatorio');
+                nombre.style.borderColor = 'var(--color-error)';
+                isValid = false;
+                primerError = primerError || nombre;
+            }
+
+            // Validar email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.trim()) {
+                mostrarErrorCampo(errorEmail, 'El correo es obligatorio');
+                email.style.borderColor = 'var(--color-error)';
+                isValid = false;
+                primerError = primerError || email;
+            } else if (!emailRegex.test(email.value)) {
+                mostrarErrorCampo(errorEmail, 'Ingresa un correo válido');
+                email.style.borderColor = 'var(--color-error)';
+                isValid = false;
+                primerError = primerError || email;
+            }
+
+            // Validar contraseña
+            if (!password.value) {
+                mostrarErrorCampo(errorPassword, 'La contraseña es obligatoria');
+                password.style.borderColor = 'var(--color-error)';
+                isValid = false;
+                primerError = primerError || password;
+            } else if (password.value.length < 6) {
+                mostrarErrorCampo(errorPassword, 'La contraseña debe tener al menos 6 caracteres');
+                password.style.borderColor = 'var(--color-error)';
+                isValid = false;
+                primerError = primerError || password;
+            }
+
+            // Validar confirmación de contraseña
+            if (!confirmPassword.value) {
+                mostrarErrorCampo(errorConfirmPassword, 'Confirma tu contraseña');
+                confirmPassword.style.borderColor = 'var(--color-error)';
+                isValid = false;
+                primerError = primerError || confirmPassword;
+            } else if (confirmPassword.value !== password.value) {
+                mostrarErrorCampo(errorConfirmPassword, 'Las contraseñas no coinciden');
+                confirmPassword.style.borderColor = 'var(--color-error)';
+                isValid = false;
+                primerError = primerError || confirmPassword;
+            }
+
+            // Validar términos
+            if (!terminos.checked) {
+                mostrarErrorCampo(errorTerminos, 'Debes aceptar los términos y condiciones');
+                isValid = false;
+            }
+
+            // Hacer scroll al primer error
+            if (primerError) {
+                primerError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            return isValid;
+        }
+
+        // Manejar envío del formulario
+        registroForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Limpiar errores generales
+            errorGeneral.style.display = 'none';
+            errorGeneral.textContent = '';
+
+            // Validar formulario
+            if (!validarFormulario()) {
+                return;
+            }
+            
+            const nombreValor = nombre.value.trim();
+            const emailValor = email.value.trim();
+            const passwordValor = password.value;
+            
+            btnRegistro.disabled = true;
+            btnRegistro.textContent = 'Registrando...';
+            
+            try {
+                // Crear usuario en Authentication
+                const userCredential = await auth.createUserWithEmailAndPassword(emailValor, passwordValor);
+                const user = userCredential.user;
+
+                // Guardar en Firestore
+                await db.collection('usuarios').doc(user.uid).set({
+                    nombre: nombreValor,
+                    email: emailValor,
+                    esAdmin: false,
+                    activo: true,
+                    fechaRegistro: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                // Mostrar pantalla de éxito
+                emailRegistrado.textContent = emailValor;
+                formularioRegistro.style.display = 'none';
+                pantallaExito.style.display = 'block';
+                
+            } catch (error) {
+                console.error('Error en registro:', error);
+                
+                // Manejar errores específicos
+                let mensajeError = '';
+                switch(error.code) {
+                    case 'auth/email-already-in-use':
+                        mensajeError = 'Este correo electrónico ya está registrado. ¿Olvidaste tu contraseña?';
+                        email.style.borderColor = 'var(--color-error)';
+                        break;
+                    case 'auth/invalid-email':
+                        mensajeError = 'El formato del correo no es válido.';
+                        email.style.borderColor = 'var(--color-error)';
+                        break;
+                    case 'auth/weak-password':
+                        mensajeError = 'La contraseña es muy débil. Debe tener al menos 6 caracteres.';
+                        password.style.borderColor = 'var(--color-error)';
+                        break;
+                    case 'auth/network-request-failed':
+                        mensajeError = 'Error de conexión. Verifica tu internet.';
+                        break;
+                    default:
+                        mensajeError = 'Error al registrar. Intenta de nuevo.';
+                }
+                
+                errorGeneral.textContent = mensajeError;
+                errorGeneral.style.display = 'block';
+                
+                btnRegistro.disabled = false;
+                btnRegistro.textContent = 'Registrarse';
+            }
+        });
+    </script>
+
+    <style>
+        /* Estilos para mensajes de error */
+        .mensaje-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 2px solid #f5c6cb;
+            font-size: 0.95rem;
+        }
+
+        .mensaje-error-campo {
+            color: #dc3545;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        /* Estilos para requisitos de contraseña */
+        .requisito-contraseña {
+            font-size: 0.85rem;
+            color: var(--color-texto-claro);
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .requisito-contraseña.valido {
+            color: var(--color-exito);
+        }
+
+        .requisito-icono {
+            font-size: 1rem;
+        }
+
+        /* Estilos para campos válidos */
+        input:valid:not(:placeholder-shown) {
+            border-color: var(--color-exito);
+        }
+
+        /* Estilos para checkbox personalizado */
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .checkbox-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark {
+            position: absolute;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: white;
+            border: 2px solid var(--color-borde);
+            border-radius: 4px;
+        }
+
+        .checkbox-container:hover input ~ .checkmark {
+            border-color: var(--color-primario);
+        }
+
+        .checkbox-container input:checked ~ .checkmark {
+            background-color: var(--color-primario);
+            border-color: var(--color-primario);
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        .checkbox-container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        .checkbox-container .checkmark:after {
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        /* Estilos para pantalla de éxito */
+        .pantalla-exito {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .icono-exito {
+            margin-bottom: 20px;
+        }
+
+        .icono-exito svg {
+            width: 80px;
+            height: 80px;
+        }
+
+        .pantalla-exito h2 {
+            color: var(--color-primario-oscuro);
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+
+        .mensaje-exito {
+            background-color: var(--color-primario-claro);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .mensaje-exito p {
+            color: var(--color-texto);
+            font-size: 1.1rem;
+            margin: 5px 0;
+        }
+
+        .email-registrado {
+            font-weight: bold;
+            color: var(--color-primario-oscuro);
+            font-size: 1.2rem;
+        }
+
+        .informacion-adicional {
+            margin: 25px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            color: var(--color-texto-claro);
+        }
+
+        .acciones-exito {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .acciones-exito .btn {
+            min-width: 150px;
+        }
+
+        /* Estilos para modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-contenido {
+            background-color: white;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 2px solid var(--color-borde);
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 2px solid var(--color-borde);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: white;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: var(--color-primario-oscuro);
+        }
+
+        .cerrar-modal {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--color-texto-claro);
+            padding: 0 10px;
+        }
+
+        .cerrar-modal:hover {
+            color: var(--color-texto);
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-body h3 {
+            color: var(--color-primario-oscuro);
+            margin: 20px 0 10px;
+        }
+
+        .modal-body h3:first-child {
+            margin-top: 0;
+        }
+
+        .modal-body p {
+            color: var(--color-texto-claro);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .modal-footer {
+            padding: 20px;
+            border-top: 2px solid var(--color-borde);
+            text-align: right;
+        }
+
+        @media (max-width: 768px) {
+            .acciones-exito {
+                flex-direction: column;
+            }
+            
+            .acciones-exito .btn {
+                width: 100%;
+            }
+        }
+    </style>
 </body>
 </html>

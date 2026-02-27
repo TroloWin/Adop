@@ -8,97 +8,124 @@
 </head>
 <body>
     <div class="admin-layout">
+        <!-- Sidebar (igual que en index) -->
         <aside class="admin-sidebar">
-            <!-- mismo sidebar -->
+            <div class="sidebar-logo">
+                <img src="../assets/images/logo.png" alt="Patitas Felices" />
+                <span>Admin Panel</span>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="index.html">Dashboard</a>
+                <a href="mascotas.html" class="activo">Mascotas</a>
+                <a href="solicitudes.html">Solicitudes</a>
+                <a href="usuarios.html">Usuarios</a>
+                <a href="configuracion.html">Configuración</a>
+                <hr>
+                <a href="../index.html">Ver sitio</a>
+            </nav>
         </aside>
 
         <main class="admin-contenido">
-            <header class="admin-header">
+            <div class="admin-header">
                 <h1>Gestión de Mascotas</h1>
-                <a href="mascota-nueva.html" class="btn-primario">+ Registrar nueva mascota (RF3.2)</a>
-            </header>
-
-            <!-- filtros -->
-            <div class="filtros-admin">
-                <input type="text" placeholder="Buscar mascota..." />
-                <select>
-                    <option>Todos los estados</option>
-                    <option>Disponible</option>
-                    <option>En proceso</option>
-                    <option>Adoptado</option>
-                </select>
-                <select>
-                    <option>Todas las especies</option>
-                    <option>Perro</option>
-                    <option>Gato</option>
-                </select>
-                <button class="btn-filtrar">Filtrar</button>
+                <a href="mascota-nueva.html" class="btn-primario">
+                    <img src="../assets/icons/add.svg" alt="Nueva" class="icono" />
+                    + Nueva Mascota
+                </a>
             </div>
 
-            <!-- tabla mascotas -->
-            <table class="tabla-admin">
+            <!-- Filtros y búsqueda -->
+            <div class="filtros-avanzados">
+                <div class="busqueda">
+                    <img src="../assets/icons/search.svg" alt="Buscar" class="icono-input" />
+                    <input type="text" id="buscarMascota" placeholder="Buscar por nombre...">
+                </div>
+                
+                <select id="filtroEspecie">
+                    <option value="">Todas las especies</option>
+                    <option value="perro">Perros</option>
+                    <option value="gato">Gatos</option>
+                    <option value="conejo">Conejos</option>
+                    <option value="ave">Aves</option>
+                </select>
+
+                <select id="filtroEstado">
+                    <option value="">Todos los estados</option>
+                    <option value="disponible">Disponible</option>
+                    <option value="proceso">En proceso</option>
+                    <option value="adoptado">Adoptado</option>
+                </select>
+
+                <button onclick="aplicarFiltros()" class="btn-filtrar">
+                    <img src="../assets/icons/filter.svg" alt="Filtrar" class="icono" />
+                    Filtrar
+                </button>
+
+                <button onclick="limpiarFiltros()" class="btn-limpiar">
+                    Limpiar
+                </button>
+            </div>
+
+            <!-- Estadísticas rápidas -->
+            <div class="stats-pequenas">
+                <div class="stat">
+                    <span class="stat-label">Disponibles:</span>
+                    <span class="stat-value" id="statDisponibles">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">En proceso:</span>
+                    <span class="stat-value" id="statProceso">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Adoptados:</span>
+                    <span class="stat-value" id="statAdoptados">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Total:</span>
+                    <span class="stat-value" id="statTotal">0</span>
+                </div>
+            </div>
+
+            <!-- Tabla de mascotas -->
+            <table class="tabla-admin tabla-completa">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Foto</th>
                         <th>Nombre</th>
                         <th>Especie</th>
                         <th>Edad</th>
-                        <th>Estado (RF3.4)</th>
+                        <th>Tamaño</th>
+                        <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>001</td>
-                        <td>Luna</td>
-                        <td>Perro</td>
-                        <td>2 años</td>
-                        <td>
-                            <select class="estado-select" data-id="1">
-                                <option value="disponible" selected>Disponible</option>
-                                <option value="proceso">En proceso</option>
-                                <option value="adoptado">Adoptado</option>
-                            </select>
-                        </td>
-                        <td class="acciones">
-                            <a href="mascota-editar.html?id=1" class="btn-editar">Editar (RF3.3)</a>
-                            <button class="btn-eliminar" onclick="confirmarEliminar(1)">Eliminar (RF3.5)</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>002</td>
-                        <td>Max</td>
-                        <td>Perro</td>
-                        <td>3 años</td>
-                        <td>
-                            <select class="estado-select" data-id="2">
-                                <option value="disponible">Disponible</option>
-                                <option value="proceso" selected>En proceso</option>
-                                <option value="adoptado">Adoptado</option>
-                            </select>
-                        </td>
-                        <td class="acciones">
-                            <a href="mascota-editar.html?id=2" class="btn-editar">Editar</a>
-                            <button class="btn-eliminar" onclick="confirmarEliminar(2)">Eliminar</button>
-                        </td>
-                    </tr>
+                <tbody id="tablaMascotas">
+                    <tr><td colspan="7" class="cargando">Cargando mascotas...</td></tr>
                 </tbody>
             </table>
 
-            <!-- modal confirmacion eliminacion -->
-            <div id="modalEliminar" class="modal">
-                <div class="modal-contenido">
-                    <h3>¿Eliminar mascota?</h3>
-                    <p>Esta acción no se puede deshacer (RF3.5)</p>
-                    <div class="modal-botones">
-                        <button class="btn-secundario" onclick="cerrarModal()">Cancelar</button>
-                        <button class="btn-peligro">Confirmar eliminación</button>
-                    </div>
-                </div>
+            <!-- Paginación -->
+            <div class="paginacion">
+                <button class="btn-pagina" id="btnAnterior" disabled>Anterior</button>
+                <span class="info-pagina" id="infoPagina">Página 1 de 1</span>
+                <button class="btn-pagina" id="btnSiguiente">Siguiente</button>
             </div>
         </main>
     </div>
 
-    <script src="../js/admin.js"></script>
+    <!-- Modal de confirmación -->
+    <div id="modalConfirmar" class="modal">
+        <div class="modal-contenido">
+            <h3 id="modalTitulo">Confirmar acción</h3>
+            <p id="modalMensaje">¿Estás seguro de realizar esta acción?</p>
+            <div class="modal-botones">
+                <button class="btn-secundario" onclick="cerrarModal()">Cancelar</button>
+                <button class="btn-peligro" id="btnConfirmar">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/admin-mascotas.js"></script>
 </body>
 </html>

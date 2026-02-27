@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestionar Usuarios | Admin</title>
+    <link rel="stylesheet" href="../css/estilos-admin.css" />
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <!-- Sidebar igual -->
+        </aside>
+
+        <main class="admin-contenido">
+            <div class="admin-header">
+                <h1>Gestión de Usuarios</h1>
+                <button onclick="abrirModalNuevoUsuario()" class="btn-primario">
+                    <img src="../assets/icons/add.svg" alt="Nuevo" class="icono" />
+                    + Nuevo Usuario
+                </button>
+            </div>
+
+            <!-- Filtros -->
+            <div class="filtros-avanzados">
+                <div class="busqueda">
+                    <img src="../assets/icons/search.svg" alt="Buscar" class="icono-input" />
+                    <input type="text" id="buscarUsuario" placeholder="Buscar por nombre o email...">
+                </div>
+                
+                <select id="filtroTipo">
+                    <option value="">Todos los tipos</option>
+                    <option value="admin">Administradores</option>
+                    <option value="adoptante">Adoptantes</option>
+                </select>
+
+                <select id="filtroEstado">
+                    <option value="">Todos los estados</option>
+                    <option value="activo">Activos</option>
+                    <option value="inactivo">Inactivos</option>
+                </select>
+
+                <button onclick="aplicarFiltrosUsuarios()" class="btn-filtrar">Filtrar</button>
+            </div>
+
+            <!-- Tabla de usuarios -->
+            <table class="tabla-admin">
+                <thead>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th>Tipo</th>
+                        <th>Estado</th>
+                        <th>Registro</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaUsuarios">
+                    <tr><td colspan="7" class="cargando">Cargando usuarios...</td></tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+
+    <!-- Modal nuevo usuario -->
+    <div id="modalNuevoUsuario" class="modal">
+        <div class="modal-contenido">
+            <h3>Crear nuevo usuario</h3>
+            <form id="formNuevoUsuario">
+                <div class="campo-formulario">
+                    <label for="nuevoNombre">Nombre completo</label>
+                    <input type="text" id="nuevoNombre" required>
+                </div>
+                <div class="campo-formulario">
+                    <label for="nuevoEmail">Email</label>
+                    <input type="email" id="nuevoEmail" required>
+                </div>
+                <div class="campo-formulario">
+                    <label for="nuevoPassword">Contraseña</label>
+                    <input type="password" id="nuevoPassword" required minlength="6">
+                </div>
+                <div class="campo-formulario">
+                    <label for="nuevoTelefono">Teléfono</label>
+                    <input type="tel" id="nuevoTelefono">
+                </div>
+                <div class="campo-formulario checkbox">
+                    <label>
+                        <input type="checkbox" id="nuevoEsAdmin"> ¿Es administrador?
+                    </label>
+                </div>
+                <div class="modal-botones">
+                    <button type="button" onclick="cerrarModal()" class="btn-secundario">Cancelar</button>
+                    <button type="submit" class="btn-primario">Crear usuario</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/admin-usuarios.js"></script>
+</body>
+</html>

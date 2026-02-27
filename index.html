@@ -11,24 +11,21 @@
     <nav class="navegacion">
         <div class="contenedor">
             <div class="logo">
-                <img src="assets/images/logo.svg" alt="Patitas Felices" />
+                <img src="assets/images/logo.png" alt="Patitas Felices" />
                 <span class="logo-texto">Patitas Felices</span>
             </div>
             
-            <div class="enlaces-nav">
-                <a href="index.html" class="enlace activo">Inicio</a>
-                <a href="adoptar.html" class="enlace">Adoptar</a>
-                <a href="donadores.html" class="enlace">Donadores</a>
-                <a href="nosotros.html" class="enlace">Nosotros</a>
-                <a href="login.html" class="btn btn-outline">Iniciar Sesión</a>
-                <a href="registro.html" class="btn btn-primario">Registrarse</a>
+            <div class="enlaces-nav" id="enlacesNav">
+                <!-- Los enlaces se cargarán dinámicamente -->
             </div>
             
-            <button class="menu-movil" id="menuMovil">☰</button>
+            <button class="menu-movil" id="menuMovil">
+                <img src="assets/icons/menu.svg" alt="Menú" class="icono" />
+            </button>
         </div>
     </nav>
 
-    <!-- contenido principal -->
+    <!-- contenido principal (igual que antes) -->
     <main>
         <!-- seccion hero -->
         <section class="hero">
@@ -40,71 +37,98 @@
                         <a href="adoptar.html" class="btn btn-primario btn-grande">Adoptar Ahora</a>
                         <a href="registro.html" class="btn btn-outline btn-grande">Registrarme</a>
                     </div>
-                    <div class="hero-estadisticas">
-                        <div class="estadistica">
-                            <span class="estadistica-numero">150+</span>
-                            <span class="estadistica-label">Adoptados</span>
-                        </div>
-                        <div class="estadistica">
-                            <span class="estadistica-numero">45</span>
-                            <span class="estadistica-label">Disponibles</span>
-                        </div>
-                        <div class="estadistica">
-                            <span class="estadistica-numero">200+</span>
-                            <span class="estadistica-label">Familias felices</span>
-                        </div>
-                    </div>
                 </div>
                 <div class="hero-imagen">
-                    <img src="assets/images/hero-pets.svg" alt="Mascotas felices" />
+                    <img src="assets/images/hero-image.png" alt="Mascotas felices" />
                 </div>
             </div>
         </section>
 
         <!-- seccion como adoptar -->
-        <section class="seccion como-funciona">
+        <section class="seccion">
             <div class="contenedor">
                 <div class="encabezado-seccion">
-                    <h2>¿Cómo funciona?</h2>
-                    <p>Tres pasos simples para encontrar a tu nuevo mejor amigo</p>
+                    <h2>Pasos para registrarse</h2>
+                    <p>Tres pasos simples para crear tu cuenta</p>
                 </div>
                 
                 <div class="pasos-grid">
                     <div class="paso-tarjeta">
-                        <div class="paso-icono">
-                            <span class="paso-numero">1</span>
-                            <img src="assets/icons/dog.svg" alt="Registro" />
+                        <div class="paso-imagen">
+                            <img src="assets/images/paso-registro-1.png" alt="Paso 1" />
                         </div>
-                        <h3>Crea tu cuenta</h3>
-                        <p>Regístrate como adoptante con tu correo electrónico y una contraseña segura.</p>
+                        <h3>1. Crea tu cuenta</h3>
+                        <p>Regístrate con tu correo electrónico y una contraseña segura.</p>
                     </div>
                     
                     <div class="paso-tarjeta">
-                        <div class="paso-icono">
-                            <span class="paso-numero">2</span>
-                            <img src="assets/icons/cat.svg" alt="Buscar" />
+                        <div class="paso-imagen">
+                            <img src="assets/images/paso-registro-2.png" alt="Paso 2" />
                         </div>
-                        <h3>Busca tu mascota</h3>
-                        <p>Explora nuestro catálogo y filtra por especie, edad, tamaño y estado.</p>
+                        <h3>2. Verifica tu email</h3>
+                        <p>Revisa tu bandeja de entrada y confirma tu dirección de correo.</p>
                     </div>
                     
                     <div class="paso-tarjeta">
-                        <div class="paso-icono">
-                            <span class="paso-numero">3</span>
-                            <img src="assets/icons/filter.svg" alt="Solicitud" />
+                        <div class="paso-imagen">
+                            <img src="assets/images/paso-registro-3.png" alt="Paso 3" />
                         </div>
-                        <h3>Envía tu solicitud</h3>
-                        <p>Completa el formulario y espera la revisión del administrador.</p>
+                        <h3>3. Completa tu perfil</h3>
+                        <p>Añade tu información personal para comenzar.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- seccion mascotas destacadas (RF3.1, RF3.8) -->
-        <section class="seccion mascotas-destacadas">
+        <!-- seccion pasos para adoptar -->
+        <section class="seccion fondo-claro">
             <div class="contenedor">
                 <div class="encabezado-seccion">
-                    <h2>Mascotas Disponibles</h2>
+                    <h2>Pasos para adoptar</h2>
+                    <p>Cuatro pasos para encontrar a tu nuevo mejor amigo</p>
+                </div>
+                
+                <div class="pasos-grid cuatro-columnas">
+                    <div class="paso-tarjeta">
+                        <div class="paso-imagen">
+                            <img src="assets/images/paso-adoptar-1.png" alt="Paso 1" />
+                        </div>
+                        <h3>1. Explora mascotas</h3>
+                        <p>Busca y filtra por especie, edad y tamaño.</p>
+                    </div>
+                    
+                    <div class="paso-tarjeta">
+                        <div class="paso-imagen">
+                            <img src="assets/images/paso-adoptar-2.png" alt="Paso 2" />
+                        </div>
+                        <h3>2. Elige tu favorita</h3>
+                        <p>Revisa la ficha completa de cada mascota.</p>
+                    </div>
+                    
+                    <div class="paso-tarjeta">
+                        <div class="paso-imagen">
+                            <img src="assets/images/paso-adoptar-3.png" alt="Paso 3" />
+                        </div>
+                        <h3>3. Envia solicitud</h3>
+                        <p>Completa el formulario de adopción.</p>
+                    </div>
+
+                    <div class="paso-tarjeta">
+                        <div class="paso-imagen">
+                            <img src="assets/images/paso-adoptar-4.png" alt="Paso 4" />
+                        </div>
+                        <h3>4. Espera revisión</h3>
+                        <p>El administrador revisará tu solicitud.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- seccion mascotas destacadas -->
+        <section class="seccion">
+            <div class="contenedor">
+                <div class="encabezado-seccion">
+                    <h2>Mascotas disponibles</h2>
                     <p>Conoce a algunas de nuestras mascotas que esperan por ti</p>
                     <a href="adoptar.html" class="btn btn-link">Ver todas →</a>
                 </div>
@@ -113,14 +137,14 @@
                     <!-- tarjeta mascota 1 -->
                     <div class="mascota-tarjeta">
                         <div class="mascota-imagen">
-                            <img src="assets/images/default-pet.svg" alt="Mascota" />
+                            <img src="assets/images/mascotas/perro-luna.png" alt="Luna" />
                             <span class="mascota-etiqueta disponible">Disponible</span>
                         </div>
                         <div class="mascota-info">
                             <h3 class="mascota-nombre">Luna</h3>
                             <div class="mascota-detalles">
+                                <img src="assets/icons/dog.svg" alt="Perro" class="icono-detalle" />
                                 <span class="detalle">2 años</span>
-                                <span class="detalle">Perro</span>
                                 <span class="detalle">Mediano</span>
                             </div>
                             <p class="mascota-descripcion">Juguetona y cariñosa, busca un hogar con espacio para correr.</p>
@@ -131,14 +155,14 @@
                     <!-- tarjeta mascota 2 -->
                     <div class="mascota-tarjeta">
                         <div class="mascota-imagen">
-                            <img src="assets/images/default-pet.svg" alt="Mascota" />
+                            <img src="assets/images/mascotas/gato-simba.png" alt="Simba" />
                             <span class="mascota-etiqueta disponible">Disponible</span>
                         </div>
                         <div class="mascota-info">
                             <h3 class="mascota-nombre">Simba</h3>
                             <div class="mascota-detalles">
+                                <img src="assets/icons/cat.svg" alt="Gato" class="icono-detalle" />
                                 <span class="detalle">1 año</span>
-                                <span class="detalle">Gato</span>
                                 <span class="detalle">Pequeño</span>
                             </div>
                             <p class="mascota-descripcion">Tranquilo y independiente, ideal para departamento.</p>
@@ -149,14 +173,14 @@
                     <!-- tarjeta mascota 3 -->
                     <div class="mascota-tarjeta">
                         <div class="mascota-imagen">
-                            <img src="assets/images/default-pet.svg" alt="Mascota" />
-                            <span class="mascota-etiqueta disponible">Disponible</span>
+                            <img src="assets/images/mascotas/perro-max.png" alt="Max" />
+                            <span class="mascota-etiqueta proceso">En proceso</span>
                         </div>
                         <div class="mascota-info">
-                            <h3 class="mascota-nombre">Rocky</h3>
+                            <h3 class="mascota-nombre">Max</h3>
                             <div class="mascota-detalles">
+                                <img src="assets/icons/dog.svg" alt="Perro" class="icono-detalle" />
                                 <span class="detalle">3 años</span>
-                                <span class="detalle">Perro</span>
                                 <span class="detalle">Grande</span>
                             </div>
                             <p class="mascota-descripcion">Energetico y leal, necesita espacio y actividad fisica.</p>
@@ -166,41 +190,13 @@
                 </div>
             </div>
         </section>
-
-        <!-- seccion testimonios -->
-        <section class="seccion testimonios">
-            <div class="contenedor">
-                <div class="encabezado-seccion">
-                    <h2>Familias felices</h2>
-                    <p>Personas que encontraron a su compañero ideal</p>
-                </div>
-                
-                <div class="testimonios-grid">
-                    <div class="testimonio-tarjeta">
-                        <p class="testimonio-texto">"Adoptar a Luna fue la mejor decisión. El proceso fue muy fácil y ahora es parte de nuestra familia."</p>
-                        <div class="testimonio-autor">
-                            <div class="autor-avatar"></div>
-                            <div class="autor-info">
-                                <h4>María González</h4>
-                                <p>Adoptó a Luna</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonio-tarjeta">
-                        <p class="testimonio-texto">"Excelente organización. Me guiaron en todo el proceso y ahora Simba es el rey de la casa."</p>
-                        <div class="testimonio-autor">
-                            <div class="autor-avatar"></div>
-                            <div class="autor-info">
-                                <h4>Carlos Rodríguez</h4>
-                                <p>Adoptó a Simba</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
+
+    <!-- boton flotante adoptar -->
+    <a href="adoptar.html" class="boton-flotante">
+        <img src="assets/icons/heart.svg" alt="Adoptar" />
+        <span>Adoptar</span>
+    </a>
 
     <!-- pie de pagina -->
     <footer class="pie-pagina">
@@ -208,7 +204,7 @@
             <div class="footer-grid">
                 <div class="footer-columna">
                     <div class="logo">
-                        <img src="assets/images/logo.svg" alt="Patitas Felices" />
+                        <img src="assets/images/logo.png" alt="Patitas Felices" />
                         <span class="logo-texto">Patitas Felices</span>
                     </div>
                     <p>Dando hogar a mascotas necesitadas desde 2020</p>
@@ -216,24 +212,48 @@
                 
                 <div class="footer-columna">
                     <h4>Enlaces rápidos</h4>
-                    <a href="adoptar.html">Adoptar</a>
-                    <a href="donadores.html">Donadores</a>
-                    <a href="nosotros.html">Nosotros</a>
-                    <a href="login.html">Iniciar Sesión</a>
+                    <a href="adoptar.html">
+                        <img src="assets/icons/search.svg" alt="" class="icono-footer" />
+                        Adoptar
+                    </a>
+                    <a href="donadores.html">
+                        <img src="assets/icons/donadores.svg" alt="" class="icono-footer" />
+                        Donadores
+                    </a>
+                    <a href="nosotros.html">
+                        <img src="assets/icons/nosotros.svg" alt="" class="icono-footer" />
+                        Nosotros
+                    </a>
                 </div>
                 
                 <div class="footer-columna">
                     <h4>Contacto</h4>
-                    <p>Email: info@patitasfelices.com</p>
-                    <p>Tel: (123) 456-7890</p>
+                    <p>
+                        <img src="assets/icons/email.svg" alt="Email" class="icono-footer" />
+                        info@patitasfelices.com
+                    </p>
+                    <p>
+                        <img src="assets/icons/phone.svg" alt="Teléfono" class="icono-footer" />
+                        (123) 456-7890
+                    </p>
+                    <p>
+                        <img src="assets/icons/location.svg" alt="Ubicación" class="icono-footer" />
+                        Av. Principal 123
+                    </p>
                 </div>
                 
                 <div class="footer-columna">
                     <h4>Síguenos</h4>
                     <div class="redes-sociales">
-                        <a href="#" class="red-social">FB</a>
-                        <a href="#" class="red-social">IG</a>
-                        <a href="#" class="red-social">TW</a>
+                        <a href="#" class="red-social">
+                            <img src="assets/icons/facebook.svg" alt="Facebook" />
+                        </a>
+                        <a href="#" class="red-social">
+                            <img src="assets/icons/instagram.svg" alt="Instagram" />
+                        </a>
+                        <a href="#" class="red-social">
+                            <img src="assets/icons/twitter.svg" alt="Twitter" />
+                        </a>
                     </div>
                 </div>
             </div>
@@ -244,6 +264,291 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    
+    <!-- Configuración -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    
+    <!-- Script para mostrar usuario autenticado -->
+    <script>
+        const enlacesNav = document.getElementById('enlacesNav');
+
+        // Función para cerrar sesión (definirla globalmente)
+        window.cerrarSesion = async function() {
+            try {
+                await auth.signOut();
+                window.location.href = 'index.html';
+            } catch (error) {
+                console.error('Error al cerrar sesión:', error);
+                alert('Error al cerrar sesión');
+            }
+        };
+
+        // Función para crear los enlaces de navegación según el estado del usuario
+        function crearEnlacesNavegacion(usuario = null, userData = null) {
+            if (usuario && userData) {
+                // Usuario logueado
+                return `
+                    <a href="index.html" class="enlace activo">
+                        <img src="assets/icons/home.svg" alt="Inicio" class="icono" />
+                        Inicio
+                    </a>
+                    <a href="adoptar.html" class="enlace">
+                        <img src="assets/icons/search.svg" alt="Adoptar" class="icono" />
+                        Adoptar
+                    </a>
+                    <a href="donadores.html" class="enlace">
+                        <img src="assets/icons/donadores.svg" alt="Donadores" class="icono" />
+                        Donadores
+                    </a>
+                    <a href="nosotros.html" class="enlace">
+                        <img src="assets/icons/nosotros.svg" alt="Nosotros" class="icono" />
+                        Nosotros
+                    </a>
+                    <div class="usuario-menu-container">
+                        <div class="usuario-menu" onclick="toggleDropdown(event)">
+                            <img src="assets/icons/user.svg" alt="Usuario" class="icono usuario-icono" />
+                            <span class="usuario-nombre">${userData.nombre || 'Usuario'}</span>
+                            <img src="assets/icons/arrow-down.svg" alt="▼" class="icono-pequeno flecha-dropdown" />
+                        </div>
+                        <div class="usuario-dropdown" id="usuarioDropdown">
+                            <a href="perfil.html" onclick="irAPagina(event, 'perfil.html')">
+                                <img src="assets/icons/user.svg" alt="Perfil" class="icono-pequeno" />
+                                Mi Perfil
+                            </a>
+                            ${userData.esAdmin ? `
+                                <a href="admin/index.html" onclick="irAPagina(event, 'admin/index.html')">
+                                    <img src="assets/icons/admin.svg" alt="Admin" class="icono-pequeno" />
+                                    Panel Admin
+                                </a>
+                            ` : ''}
+                            <a href="mis-solicitudes.html" onclick="irAPagina(event, 'mis-solicitudes.html')">
+                                <img src="assets/icons/pending.svg" alt="Solicitudes" class="icono-pequeno" />
+                                Mis Solicitudes
+                            </a>
+                            <hr>
+                            <a href="#" onclick="cerrarSesion(); return false;">
+                                <img src="assets/icons/logout.svg" alt="Salir" class="icono-pequeno" />
+                                Cerrar Sesión
+                            </a>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Usuario no logueado
+                return `
+                    <a href="index.html" class="enlace activo">
+                        <img src="assets/icons/home.svg" alt="Inicio" class="icono" />
+                        Inicio
+                    </a>
+                    <a href="adoptar.html" class="enlace">
+                        <img src="assets/icons/search.svg" alt="Adoptar" class="icono" />
+                        Adoptar
+                    </a>
+                    <a href="donadores.html" class="enlace">
+                        <img src="assets/icons/donadores.svg" alt="Donadores" class="icono" />
+                        Donadores
+                    </a>
+                    <a href="nosotros.html" class="enlace">
+                        <img src="assets/icons/nosotros.svg" alt="Nosotros" class="icono" />
+                        Nosotros
+                    </a>
+                    <a href="login.html" class="btn btn-outline">
+                        <img src="assets/icons/user.svg" alt="Login" class="icono" />
+                        Iniciar Sesión
+                    </a>
+                    <a href="registro.html" class="btn btn-primario">Registrarse</a>
+                `;
+            }
+        }
+
+        // Función para toggle del dropdown
+        window.toggleDropdown = function(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('usuarioDropdown');
+            dropdown.classList.toggle('show');
+        };
+
+        // Función para navegación con prevención de conflictos
+        window.irAPagina = function(event, url) {
+            event.preventDefault();
+            event.stopPropagation();
+            window.location.href = url;
+        };
+
+        // Cerrar dropdown al hacer clic fuera
+        document.addEventListener('click', function() {
+            const dropdown = document.getElementById('usuarioDropdown');
+            if (dropdown && dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+            }
+        });
+
+        // Verificar si hay usuario autenticado
+        auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                // Usuario logueado - obtener datos de Firestore
+                try {
+                    const userDoc = await db.collection('usuarios').doc(user.uid).get();
+                    if (userDoc.exists) {
+                        const userData = userDoc.data();
+                        enlacesNav.innerHTML = crearEnlacesNavegacion(user, userData);
+                    } else {
+                        enlacesNav.innerHTML = crearEnlacesNavegacion();
+                    }
+                } catch (error) {
+                    console.error('Error al obtener datos del usuario:', error);
+                    enlacesNav.innerHTML = crearEnlacesNavegacion();
+                }
+            } else {
+                // Usuario no logueado
+                enlacesNav.innerHTML = crearEnlacesNavegacion();
+            }
+        });
+    </script>
+
+    <style>
+        /* Estilos para el menú de usuario */
+        .usuario-menu-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .usuario-menu {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 15px;
+            border-radius: var(--borde-redondo);
+            background-color: var(--color-primario-claro);
+            transition: var(--transicion);
+        }
+
+        .usuario-menu:hover {
+            background-color: var(--color-primario);
+        }
+
+        .usuario-menu:hover .usuario-nombre,
+        .usuario-menu:hover .usuario-icono,
+        .usuario-menu:hover .flecha-dropdown {
+            color: white;
+            filter: brightness(0) invert(1);
+        }
+
+        .usuario-nombre {
+            color: var(--color-primario-oscuro);
+            font-weight: 500;
+            max-width: 150px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .flecha-dropdown {
+            transition: transform 0.3s;
+        }
+
+        .usuario-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: var(--color-blanco);
+            min-width: 220px;
+            border: 2px solid var(--color-borde);
+            border-radius: var(--borde-redondo);
+            box-shadow: var(--sombra);
+            z-index: 1000;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .usuario-dropdown.show {
+            display: block;
+            animation: fadeIn 0.2s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .usuario-dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            color: var(--color-texto);
+            text-decoration: none;
+            transition: var(--transicion);
+            font-size: 0.95rem;
+        }
+
+        .usuario-dropdown a:hover {
+            background-color: var(--color-primario-claro);
+            color: var(--color-primario-oscuro);
+        }
+
+        .usuario-dropdown hr {
+            margin: 5px 0;
+            border: none;
+            border-top: 1px solid var(--color-borde);
+        }
+
+        .usuario-dropdown img {
+            width: 18px;
+            height: 18px;
+            filter: brightness(0) saturate(100%) invert(30%) sepia(50%) saturate(500%) hue-rotate(220deg);
+        }
+
+        .usuario-dropdown a:hover img {
+            filter: brightness(0) saturate(100%) invert(20%) sepia(80%) saturate(700%) hue-rotate(220deg);
+        }
+
+        @media (max-width: 768px) {
+            .usuario-nombre {
+                max-width: 100px;
+            }
+            
+            .usuario-dropdown {
+                position: fixed;
+                top: auto;
+                right: 10px;
+                left: 10px;
+                width: auto;
+                margin-top: 10px;
+            }
+            
+            .enlaces-nav {
+                flex-wrap: wrap;
+            }
+            
+            .usuario-menu-container {
+                width: 100%;
+                margin-top: 10px;
+            }
+            
+            .usuario-menu {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .usuario-dropdown {
+                position: static;
+                display: none;
+                width: 100%;
+                margin-top: 5px;
+            }
+            
+            .usuario-dropdown.show {
+                display: block;
+            }
+        }
+    </style>
 </body>
 </html>
