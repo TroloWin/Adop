@@ -11,264 +11,140 @@
     <nav class="navegacion">
         <div class="contenedor">
             <div class="logo">
-                <img src="assets/images/logo.png" alt="Patitas Felices" />
-                <span class="logo-texto">Patitas Felices</span>
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="Patitas Felices" />
+                    <span class="logo-texto">Patitas Felices</span>
+                </a>
             </div>
             
-            <div class="enlaces-nav" id="enlacesNav">
-                <!-- Los enlaces se cargarán dinámicamente con JavaScript -->
-            </div>
+            <div class="enlaces-nav" id="enlacesNav"></div>
             
             <button class="menu-movil" id="menuMovil">
-                <img src="assets/icons/menu.svg" alt="Menú" class="icono" />
+                <img src="assets/icons/menu.svg" alt="Menu" class="icono" />
             </button>
         </div>
     </nav>
 
-    <!-- contenido principal -->
     <main>
-        <!-- encabezado de pagina -->
         <section class="encabezado-pagina">
             <div class="contenedor">
                 <h1>Sobre Nosotros</h1>
-                <p>Conoce nuestra historia, misión y el equipo detrás de Patitas Felices</p>
+                <p>Conoce a los creadores de Patitas Felices</p>
             </div>
         </section>
 
-        <!-- seccion nuestra historia -->
         <section class="seccion">
             <div class="contenedor">
-                <div class="nosotros-grid">
-                    <div class="nosotros-imagen">
-                        <img src="assets/images/nosotros-historia.png" alt="Nuestra historia" />
-                    </div>
-                    <div class="nosotros-contenido">
-                        <h2>Nuestra Historia</h2>
-                        <p>Patitas Felices nació en 2020 con un sueño simple pero poderoso: crear un puente entre mascotas abandonadas y familias amorosas. Lo que comenzó como un pequeño grupo de voluntarios ayudando a perros y gatos en situación de calle, hoy se ha convertido en una plataforma que ha facilitado más de 150 adopciones exitosas.</p>
-                        <p>Nuestro refugio temporal y red de hogares de acogida nos permiten brindar atención personalizada a cada mascota, asegurándonos de que estén saludables y listas para encontrar un hogar para siempre.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- seccion mision vision valores -->
-        <section class="seccion fondo-claro">
-            <div class="contenedor">
-                <div class="valores-grid">
-                    <div class="valor-tarjeta">
-                        <div class="valor-icono">
-                            <img src="assets/icons/mision.svg" alt="Misión" class="icono-grande" />
+                <div class="creadores-grid">
+                    <!-- Creador 1 -->
+                    <div class="creador-tarjeta">
+                        <div class="creador-imagen">
+                            <img src="assets/images/creadores/creador1.png" alt="Creador 1" />
                         </div>
-                        <h3>Misión</h3>
-                        <p>Rescatar, rehabilitar y encontrar hogares responsables para mascotas abandonadas, promoviendo la tenencia responsable y el respeto hacia todos los animales.</p>
+                        <h3>TW</h3>
+                        <p class="creador-cargo">Puesto</p>
+                        <p class="creador-descripcion">.</p>
                     </div>
                     
-                    <div class="valor-tarjeta">
-                        <div class="valor-icono">
-                            <img src="assets/icons/vision.svg" alt="Visión" class="icono-grande" />
+                    <!-- Creador 2 -->
+                    <div class="creador-tarjeta">
+                        <div class="creador-imagen">
+                            <img src="assets/images/creadores/creador2.png" alt="Creador 2" />
                         </div>
-                        <h3>Visión</h3>
-                        <p>Ser la organización líder en adopción de mascotas en México, creando una cultura de adopción responsable y reduciendo significativamente el abandono animal.</p>
+                        <h3>EF</h3>
+                        <p class="creador-cargo">Puestp</p>
+                        <p class="creador-descripcion">.</p>
                     </div>
                     
-                    <div class="valor-tarjeta">
-                        <div class="valor-icono">
-                            <img src="assets/icons/valores.svg" alt="Valores" class="icono-grande" />
+                    <!-- Creador 3 -->
+                    <div class="creador-tarjeta">
+                        <div class="creador-imagen">
+                            <img src="assets/images/creadores/creador3.png" alt="Creador 3" />
                         </div>
-                        <h3>Valores</h3>
-                        <p>Compromiso, empatía, transparencia, respeto y amor por los animales. Creemos en segundas oportunidades y en familias diversas.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- seccion equipo -->
-        <section class="seccion">
-            <div class="contenedor">
-                <div class="encabezado-seccion">
-                    <h2>Nuestro Equipo</h2>
-                    <p>Conoce a las personas que hacen posible esta misión</p>
-                </div>
-                
-                <div class="equipo-grid">
-                    <div class="equipo-tarjeta">
-                        <div class="equipo-imagen">
-                            <img src="assets/images/equipo/fundador.png" alt="Fundador" />
-                        </div>
-                        <h3>Alejandro Mendoza</h3>
-                        <p class="equipo-cargo">Fundador & Director</p>
-                        <p class="equipo-descripcion">Amante de los animales con 15 años de experiencia en rescate animal.</p>
-                    </div>
-                    
-                    <div class="equipo-tarjeta">
-                        <div class="equipo-imagen">
-                            <img src="assets/images/equipo/veterinaria.png" alt="Veterinaria" />
-                        </div>
-                        <h3>Dra. Laura Silva</h3>
-                        <p class="equipo-cargo">Veterinaria Principal</p>
-                        <p class="equipo-descripcion">Especialista en medicina preventiva y rehabilitación de animales rescatados.</p>
-                    </div>
-                    
-                    <div class="equipo-tarjeta">
-                        <div class="equipo-imagen">
-                            <img src="assets/images/equipo/coordinadora.png" alt="Coordinadora" />
-                        </div>
-                        <h3>Mariana Flores</h3>
-                        <p class="equipo-cargo">Coordinadora de Adopciones</p>
-                        <p class="equipo-descripcion">Encargada de encontrar el hogar perfecto para cada mascota.</p>
-                    </div>
-                    
-                    <div class="equipo-tarjeta">
-                        <div class="equipo-imagen">
-                            <img src="assets/images/equipo/voluntarios.png" alt="Voluntarios" />
-                        </div>
-                        <h3>+50 Voluntarios</h3>
-                        <p class="equipo-cargo">Red de Apoyo</p>
-                        <p class="equipo-descripcion">Personas comprometidas que donan su tiempo y amor a los animales.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- seccion estadisticas -->
-        <section class="seccion fondo-claro">
-            <div class="contenedor">
-                <div class="estadisticas-grid">
-                    <div class="estadistica-tarjeta">
-                        <span class="estadistica-numero">150+</span>
-                        <span class="estadistica-label">Adopciones realizadas</span>
-                    </div>
-                    <div class="estadistica-tarjeta">
-                        <span class="estadistica-numero">45</span>
-                        <span class="estadistica-label">Mascotas en adopción</span>
-                    </div>
-                    <div class="estadistica-tarjeta">
-                        <span class="estadistica-numero">200+</span>
-                        <span class="estadistica-label">Voluntarios activos</span>
-                    </div>
-                    <div class="estadistica-tarjeta">
-                        <span class="estadistica-numero">5</span>
-                        <span class="estadistica-label">Años de experiencia</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- seccion contacto directo -->
-        <section class="seccion">
-            <div class="contenedor">
-                <div class="contacto-directo-grid">
-                    <div class="contacto-info">
-                        <h2>¿Quieres contactarnos?</h2>
-                        <p>Estamos aquí para responder tus dudas sobre adopciones, donativos o cualquier otra consulta.</p>
-                        
-                        <div class="contacto-item">
-                            <img src="assets/icons/email.svg" alt="Email" class="icono" />
-                            <span>contacto@patitasfelices.com</span>
-                        </div>
-                        
-                        <div class="contacto-item">
-                            <img src="assets/icons/phone.svg" alt="Teléfono" class="icono" />
-                            <span>(55) 1234-5678</span>
-                        </div>
-                        
-                        <div class="contacto-item">
-                            <img src="assets/icons/location.svg" alt="Ubicación" class="icono" />
-                            <span>Av. Principal 123, Colonia Centro, Ciudad de México</span>
-                        </div>
-                        
-                        <div class="contacto-item">
-                            <img src="assets/icons/clock.svg" alt="Horario" class="icono" />
-                            <span>Lunes a Viernes 9am - 6pm | Sábados 9am - 2pm</span>
-                        </div>
-                    </div>
-                    
-                    <div class="contacto-mapa">
-                        <div class="mapa-placeholder">
-                            <img src="assets/images/mapa-placeholder.png" alt="Ubicación en mapa" />
-                        </div>
+                        <h3>VC</h3>
+                        <p class="creador-cargo">Puesto</p>
+                        <p class="creador-descripcion">.</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- pie de pagina -->
-    <footer class="pie-pagina">
-        <div class="contenedor">
-            <div class="footer-grid">
-                <div class="footer-columna">
-                    <div class="logo">
-                        <img src="assets/images/logo.png" alt="Patitas Felices" />
-                        <span class="logo-texto">Patitas Felices</span>
-                    </div>
-                    <p>Dando hogar a mascotas necesitadas desde 2020</p>
+<!-- pie de pagina -->
+<footer class="pie-pagina">
+    <div class="contenedor">
+        <div class="footer-grid">
+            <div class="footer-columna">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="Patitas Felices" />
+                    <span class="logo-texto">Patitas Felices</span>
                 </div>
-                
-                <div class="footer-columna">
-                    <h4>Enlaces rápidos</h4>
-                    <a href="adoptar.html">
-                        <img src="assets/icons/search.svg" alt="" class="icono-footer" />
-                        Adoptar
-                    </a>
-                    <a href="donadores.html">
-                        <img src="assets/icons/donadores.svg" alt="" class="icono-footer" />
-                        Donadores
-                    </a>
-                    <a href="nosotros.html">
-                        <img src="assets/icons/nosotros.svg" alt="" class="icono-footer" />
-                        Nosotros
-                    </a>
-                </div>
-                
-                <div class="footer-columna">
-                    <h4>Contacto</h4>
-                    <p>
-                        <img src="assets/icons/email.svg" alt="Email" class="icono-footer" />
-                        info@patitasfelices.com
-                    </p>
-                    <p>
-                        <img src="assets/icons/phone.svg" alt="Teléfono" class="icono-footer" />
-                        (123) 456-7890
-                    </p>
-                    <p>
-                        <img src="assets/icons/location.svg" alt="Ubicación" class="icono-footer" />
-                        Av. Principal 123
-                    </p>
-                </div>
-                
-                <div class="footer-columna">
-                    <h4>Síguenos</h4>
-                    <div class="redes-sociales">
-                        <a href="#" class="red-social">
-                            <img src="assets/icons/facebook.svg" alt="Facebook" class="icono-red-social" />
-                        </a>
-                        <a href="#" class="red-social">
-                            <img src="assets/icons/instagram.svg" alt="Instagram" class="icono-red-social" />
-                        </a>
-                        <a href="#" class="red-social">
-                            <img src="assets/icons/twitter.svg" alt="Twitter" class="icono-red-social" />
-                        </a>
-                    </div>
-                </div>
+                <p>\(^-^)/</p>
             </div>
             
-            <div class="footer-copyright">
-                <p>&copy; 2024 Patitas Felices. Todos los derechos reservados.</p>
+            <div class="footer-columna">
+                <h4>Enlaces rapidos</h4>
+                <a href="adoptar.html">
+                    <img src="assets/icons/search.svg" alt="Adoptar" class="icono-footer" />
+                    Adoptar
+                </a>
+                <a href="donadores.html">
+                    <img src="assets/icons/donadores.svg" alt="Donadores" class="icono-footer" />
+                    Donadores
+                </a>
+                <a href="nosotros.html">
+                    <img src="assets/icons/nosotros.svg" alt="Nosotros" class="icono-footer" />
+                    Nosotros
+                </a>
+            </div>
+            
+            <div class="footer-columna">
+                <h4>Contacto</h4>
+                <p>
+                    <img src="assets/icons/email.svg" alt="Email" class="icono-footer" />
+                    patitasfelices.nz@gmail.com
+                </p>
+                <p>
+                    <img src="assets/icons/phone.svg" alt="Telefono" class="icono-footer" />
+                    618 207 4083
+                </p>
+                <p>
+                    <img src="assets/icons/location.svg" alt="Ubicacion" class="icono-footer" />
+                    Veracruz 410, Col. Morga, C.P. 34010, Durango, Mexico
+                </p>
+            </div>
+            
+            <div class="footer-columna">
+                <h4>Siguenos</h4>
+                <div class="redes-sociales">
+                    <a href="#" class="red-social">
+                        <img src="assets/icons/facebook.svg" alt="Facebook" class="icono-red-social" />
+                    </a>
+                    <a href="#" class="red-social">
+                        <img src="assets/icons/instagram.svg" alt="Instagram" class="icono-red-social" />
+                    </a>
+                    <a href="#" class="red-social">
+                        <img src="assets/icons/twitter.svg" alt="Twitter" class="icono-red-social" />
+                    </a>
+                </div>
             </div>
         </div>
-    </footer>
+        
+        <div class="footer-copyright">
+            <p>&copy; 2026 Patitas Felices. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
 
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     
-    <!-- Configuración -->
+    <!-- Configuracion -->
     <script src="js/firebase-config.js"></script>
     <script src="js/auth.js"></script>
     
-    <!-- Script para mostrar usuario autenticado -->
     <script>
         const enlacesNav = document.getElementById('enlacesNav');
 
@@ -277,8 +153,7 @@
                 await auth.signOut();
                 window.location.href = 'index.html';
             } catch (error) {
-                console.error('Error al cerrar sesión:', error);
-                alert('Error al cerrar sesión');
+                console.error('Error al cerrar sesion:', error);
             }
         };
 
@@ -303,29 +178,25 @@
                     </a>
                     <div class="usuario-menu-container">
                         <div class="usuario-menu" onclick="toggleDropdown(event)">
-                            <img src="assets/icons/user.svg" alt="Usuario" class="icono usuario-icono" />
+                            <img src="assets/icons/user.svg" alt="Usuario" class="icono" />
                             <span class="usuario-nombre">${userData.nombre || 'Usuario'}</span>
-                            <img src="assets/icons/arrow-down.svg" alt="▼" class="icono-pequeno flecha-dropdown" />
+                            <img src="assets/icons/arrow-down.svg" alt="▼" class="icono-pequeno" />
                         </div>
                         <div class="usuario-dropdown" id="usuarioDropdown">
-                            <a href="perfil.html" onclick="irAPagina(event, 'perfil.html')">
-                                <img src="assets/icons/user.svg" alt="Perfil" class="icono-pequeno" />
-                                Mi Perfil
+                            <a href="mis-solicitudes.html">
+                                <img src="assets/icons/pending.svg" alt="Solicitudes" class="icono-pequeno" />
+                                Mis Solicitudes
                             </a>
                             ${userData.esAdmin ? `
-                                <a href="admin/index.html" onclick="irAPagina(event, 'admin/index.html')">
+                                <a href="admin/index.html">
                                     <img src="assets/icons/admin.svg" alt="Admin" class="icono-pequeno" />
                                     Panel Admin
                                 </a>
                             ` : ''}
-                            <a href="mis-solicitudes.html" onclick="irAPagina(event, 'mis-solicitudes.html')">
-                                <img src="assets/icons/pending.svg" alt="Solicitudes" class="icono-pequeno" />
-                                Mis Solicitudes
-                            </a>
                             <hr>
                             <a href="#" onclick="cerrarSesion(); return false;">
                                 <img src="assets/icons/logout.svg" alt="Salir" class="icono-pequeno" />
-                                Cerrar Sesión
+                                Cerrar Sesion
                             </a>
                         </div>
                     </div>
@@ -348,11 +219,11 @@
                         <img src="assets/icons/nosotros.svg" alt="Nosotros" class="icono" />
                         Nosotros
                     </a>
-                    <a href="login.html" class="btn btn-outline">
+                    <a href="login/login.html" class="btn btn-outline">
                         <img src="assets/icons/user.svg" alt="Login" class="icono" />
-                        Iniciar Sesión
+                        Iniciar Sesion
                     </a>
-                    <a href="registro.html" class="btn btn-primario">Registrarse</a>
+                    <a href="login/registro.html" class="btn btn-primario">Registrarse</a>
                 `;
             }
         }
@@ -361,12 +232,6 @@
             event.stopPropagation();
             const dropdown = document.getElementById('usuarioDropdown');
             dropdown.classList.toggle('show');
-        };
-
-        window.irAPagina = function(event, url) {
-            event.preventDefault();
-            event.stopPropagation();
-            window.location.href = url;
         };
 
         document.addEventListener('click', function() {

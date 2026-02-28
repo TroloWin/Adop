@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard | Panel Admin</title>
+    <link rel="stylesheet" href="../css/estilos.css" />
     <link rel="stylesheet" href="../css/estilos-admin.css" />
 </head>
 <body>
@@ -17,35 +18,27 @@
             
             <nav class="sidebar-nav">
                 <a href="index.html" class="activo">
-                    <img src="../assets/icons/dashboard.svg" alt="Dashboard" class="icono-sidebar" />
+                    <img src="../assets/icons/dashboard.svg" alt="Dashboard" class="icono" />
                     Dashboard
                 </a>
-                <a href="mascotas.html">
-                    <img src="../assets/icons/pets.svg" alt="Mascotas" class="icono-sidebar" />
-                    Mascotas
-                </a>
-                <a href="solicitudes.html">
-                    <img src="../assets/icons/requests.svg" alt="Solicitudes" class="icono-sidebar" />
-                    Solicitudes
-                </a>
                 <a href="usuarios.html">
-                    <img src="../assets/icons/users.svg" alt="Usuarios" class="icono-sidebar" />
+                    <img src="../assets/icons/users.svg" alt="Usuarios" class="icono" />
                     Usuarios
                 </a>
-                <a href="configuracion.html">
-                    <img src="../assets/icons/settings.svg" alt="Configuración" class="icono-sidebar" />
-                    Configuración
+                <a href="solicitudes.html">
+                    <img src="../assets/icons/requests.svg" alt="Solicitudes" class="icono" />
+                    Solicitudes
                 </a>
                 <hr>
                 <a href="../index.html">
-                    <img src="../assets/icons/home.svg" alt="Ver sitio" class="icono-sidebar" />
+                    <img src="../assets/icons/home.svg" alt="Ver sitio" class="icono" />
                     Ver sitio
                 </a>
             </nav>
             
             <div class="sidebar-footer">
-                <div class="admin-info">
-                    <img src="../assets/icons/admin.svg" alt="Admin" class="icono-admin" />
+                <div class="admin-info" id="adminInfo">
+                    <img src="../assets/icons/admin.svg" alt="Admin" class="icono" />
                     <div>
                         <span id="adminNombre">Cargando...</span>
                         <small>Administrador</small>
@@ -53,7 +46,7 @@
                 </div>
                 <button onclick="cerrarSesion()" class="btn-cerrar">
                     <img src="../assets/icons/logout.svg" alt="Salir" class="icono" />
-                    Cerrar sesión
+                    Cerrar sesion
                 </button>
             </div>
         </aside>
@@ -66,124 +59,59 @@
             </div>
 
             <!-- Tarjetas de resumen -->
-            <div class="dashboard-tarjetas">
-                <div class="tarjeta-resumen" id="cardMascotas">
+            <div class="dashboard-tarjetas" id="dashboardStats">
+                <div class="tarjeta-resumen">
                     <div class="tarjeta-icono">
-                        <img src="../assets/icons/pets.svg" alt="Mascotas" />
+                        <img src="../assets/icons/users.svg" alt="Usuarios" />
                     </div>
                     <div class="tarjeta-info">
-                        <h3>Mascotas totales</h3>
-                        <span class="numero" id="totalMascotas">0</span>
-                        <span class="tendencia positiva" id="tendenciaMascotas">+3 este mes</span>
+                        <h3>Total Usuarios</h3>
+                        <span class="numero" id="totalUsuarios">0</span>
                     </div>
                 </div>
 
-                <div class="tarjeta-resumen" id="cardSolicitudes">
+                <div class="tarjeta-resumen">
                     <div class="tarjeta-icono">
                         <img src="../assets/icons/requests.svg" alt="Solicitudes" />
                     </div>
                     <div class="tarjeta-info">
-                        <h3>Solicitudes pendientes</h3>
+                        <h3>Solicitudes Pendientes</h3>
                         <span class="numero" id="solicitudesPendientes">0</span>
-                        <span class="tendencia" id="textoSolicitudes">Requieren revisión</span>
                     </div>
                 </div>
 
-                <div class="tarjeta-resumen" id="cardUsuarios">
+                <div class="tarjeta-resumen">
                     <div class="tarjeta-icono">
-                        <img src="../assets/icons/users.svg" alt="Usuarios" />
+                        <img src="../assets/icons/admin.svg" alt="Administradores" />
                     </div>
                     <div class="tarjeta-info">
-                        <h3>Usuarios activos</h3>
-                        <span class="numero" id="usuariosActivos">0</span>
-                        <span class="tendencia" id="totalUsuarios">Total: 0</span>
+                        <h3>Administradores</h3>
+                        <span class="numero" id="totalAdmins">0</span>
                     </div>
                 </div>
 
-                <div class="tarjeta-resumen" id="cardAdopciones">
+                <div class="tarjeta-resumen">
                     <div class="tarjeta-icono">
-                        <img src="../assets/icons/heart.svg" alt="Adopciones" />
+                        <img src="../assets/icons/check.svg" alt="Adopciones" />
                     </div>
                     <div class="tarjeta-info">
-                        <h3>Adopciones exitosas</h3>
+                        <h3>Adopciones Exitosas</h3>
                         <span class="numero" id="adopcionesExitosas">0</span>
-                        <span class="tendencia positiva" id="tendenciaAdopciones">+12 este mes</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Gráfico de actividad (simulado) -->
-            <div class="grafico-seccion">
-                <h2>Actividad reciente</h2>
-                <div class="grafico-barras" id="graficoActividad">
-                    <!-- Se genera con JS -->
-                </div>
-            </div>
-
-            <!-- Tablas de actividad reciente -->
-            <div class="tablas-grid">
-                <!-- Últimas mascotas agregadas -->
-                <div class="tabla-reciente">
-                    <div class="tabla-header">
-                        <h3>Últimas mascotas agregadas</h3>
-                        <a href="mascotas.html" class="ver-todas">Ver todas →</a>
-                    </div>
-                    <table class="tabla-admin">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Especie</th>
-                                <th>Estado</th>
-                                <th>Fecha</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tablaMascotasRecientes">
-                            <tr><td colspan="4" class="cargando">Cargando...</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Últimas solicitudes -->
-                <div class="tabla-reciente">
-                    <div class="tabla-header">
-                        <h3>Últimas solicitudes</h3>
-                        <a href="solicitudes.html" class="ver-todas">Ver todas →</a>
-                    </div>
-                    <table class="tabla-admin">
-                        <thead>
-                            <tr>
-                                <th>Adoptante</th>
-                                <th>Mascota</th>
-                                <th>Estado</th>
-                                <th>Fecha</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tablaSolicitudesRecientes">
-                            <tr><td colspan="4" class="cargando">Cargando...</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Acciones rápidas -->
+            <!-- Acciones rapidas -->
             <div class="acciones-rapidas">
-                <h2>Acciones rápidas</h2>
+                <h2>Acciones rapidas</h2>
                 <div class="botones-accion">
-                    <a href="mascota-nueva.html" class="btn-accion">
-                        <img src="../assets/icons/add.svg" alt="Agregar" />
-                        <span>Agregar mascota</span>
-                    </a>
-                    <a href="solicitudes.html?pendientes" class="btn-accion">
-                        <img src="../assets/icons/pending.svg" alt="Pendientes" />
-                        <span>Revisar solicitudes</span>
-                    </a>
                     <a href="usuarios.html" class="btn-accion">
                         <img src="../assets/icons/users.svg" alt="Usuarios" />
-                        <span>Gestionar usuarios</span>
+                        <span>Gestionar Usuarios</span>
                     </a>
-                    <a href="reportes.html" class="btn-accion">
-                        <img src="../assets/icons/report.svg" alt="Reportes" />
-                        <span>Generar reporte</span>
+                    <a href="solicitudes.html" class="btn-accion">
+                        <img src="../assets/icons/requests.svg" alt="Solicitudes" />
+                        <span>Revisar Solicitudes</span>
                     </a>
                 </div>
             </div>
@@ -195,8 +123,54 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     
-    <!-- Configuración -->
+    <!-- Configuracion -->
     <script src="../js/firebase-config.js"></script>
-    <script src="../js/admin-dashboard.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/admin.js"></script>
+    
+    <script>
+        auth.onAuthStateChanged(async (user) => {
+            if (!user) {
+                window.location.href = '../login/login.html';
+                return;
+            }
+
+            const userDoc = await db.collection('usuarios').doc(user.uid).get();
+            const userData = userDoc.data();
+
+            if (!userData?.esAdmin) {
+                window.location.href = '../index.html';
+                return;
+            }
+
+            document.getElementById('adminNombre').textContent = userData.nombre || 'Admin';
+            
+            const fecha = new Date();
+            document.getElementById('fechaActual').textContent = fecha.toLocaleDateString('es-ES', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            cargarEstadisticas();
+        });
+
+        async function cargarEstadisticas() {
+            const stats = await obtenerEstadisticasDashboard();
+            
+            if (stats) {
+                document.getElementById('totalUsuarios').textContent = stats.usuarios.total;
+                document.getElementById('solicitudesPendientes').textContent = stats.solicitudes.pendientes;
+                document.getElementById('totalAdmins').textContent = stats.usuarios.admins;
+                document.getElementById('adopcionesExitosas').textContent = stats.solicitudes.aprobadas;
+            }
+        }
+
+        function cerrarSesion() {
+            auth.signOut().then(() => {
+                window.location.href = '../index.html';
+            });
+        }
+    </script>
 </body>
 </html>

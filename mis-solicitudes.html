@@ -7,135 +7,283 @@
     <link rel="stylesheet" href="css/estilos.css" />
 </head>
 <body>
+    <!-- navegacion principal -->
     <nav class="navegacion">
         <div class="contenedor">
             <div class="logo">
-                <img src="assets/images/logo.png" alt="Patitas Felices" />
-                <span class="logo-texto">Patitas Felices</span>
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="Patitas Felices" />
+                    <span class="logo-texto">Patitas Felices</span>
+                </a>
             </div>
             
-            <div class="enlaces-nav">
-                <a href="index.html" class="enlace">
-                    <img src="assets/icons/home.svg" alt="Inicio" class="icono" />
-                    Inicio
-                </a>
-                <a href="adoptar.html" class="enlace">
-                    <img src="assets/icons/search.svg" alt="Adoptar" class="icono" />
-                    Adoptar
-                </a>
-                <a href="mis-solicitudes.html" class="enlace activo">
-                    <img src="assets/icons/pending.svg" alt="Mis solicitudes" class="icono" />
-                    Mis solicitudes
-                </a>
-                <div class="usuario-menu">
-                    <span class="usuario-nombre">Juan Pérez</span>
-                    <button class="btn btn-outline btn-pequeno">
-                        <img src="assets/icons/logout.svg" alt="Cerrar sesión" class="icono" />
-                        Cerrar sesión
-                    </button>
-                </div>
-            </div>
+            <div class="enlaces-nav" id="enlacesNav"></div>
+            
+            <button class="menu-movil" id="menuMovil">
+                <img src="assets/icons/menu.svg" alt="Menu" class="icono" />
+            </button>
         </div>
     </nav>
 
     <main class="solicitudes-contenedor">
         <div class="contenedor">
-            <h1>Mis solicitudes de adopción</h1>
-            <p class="subtitulo">Consulta el estado de tus solicitudes</p>
-
-            <div class="solicitudes-tabs">
-                <button class="tab activo">Todas</button>
-                <button class="tab">Pendientes</button>
-                <button class="tab">Aprobadas</button>
-                <button class="tab">Rechazadas</button>
-            </div>
-
-            <div class="solicitudes-lista">
-                <!-- solicitud 1 - pendiente -->
-                <div class="solicitud-tarjeta pendiente">
-                    <div class="solicitud-header">
-                        <h3>Solicitud para Luna</h3>
-                        <span class="solicitud-estado pendiente">
-                            <img src="assets/icons/pending.svg" alt="Pendiente" class="icono-pequeno" />
-                            En revisión
-                        </span>
-                    </div>
-                    <div class="solicitud-info">
-                        <p>
-                            <img src="assets/icons/dog.svg" alt="Mascota" class="icono-pequeno" />
-                            <strong>Mascota:</strong> Luna - Perro, 2 años
-                        </p>
-                        <p>
-                            <img src="assets/icons/calendar.svg" alt="Fecha" class="icono-pequeno" />
-                            <strong>Fecha de solicitud:</strong> 15/01/2024 14:30
-                        </p>
-                    </div>
-                    <div class="solicitud-acciones">
-                        <a href="solicitud-detalle.html?id=1" class="btn btn-secundario btn-pequeno">Ver detalle</a>
-                    </div>
-                </div>
-
-                <!-- solicitud 2 - aprobada -->
-                <div class="solicitud-tarjeta aprobada">
-                    <div class="solicitud-header">
-                        <h3>Solicitud para Max</h3>
-                        <span class="solicitud-estado aprobada">
-                            <img src="assets/icons/check.svg" alt="Aprobada" class="icono-pequeno" /> <!-- NUEVO ÍCONO -->
-                            Aprobada
-                        </span>
-                    </div>
-                    <div class="solicitud-info">
-                        <p>
-                            <img src="assets/icons/dog.svg" alt="Mascota" class="icono-pequeno" />
-                            <strong>Mascota:</strong> Max - Perro, 3 años
-                        </p>
-                        <p>
-                            <img src="assets/icons/calendar.svg" alt="Fecha" class="icono-pequeno" />
-                            <strong>Fecha de solicitud:</strong> 10/01/2024 09:45
-                        </p>
-                    </div>
-                    <div class="solicitud-acciones">
-                        <a href="solicitud-detalle.html?id=2" class="btn btn-secundario btn-pequeno">Ver detalle</a>
-                    </div>
-                </div>
-
-                <!-- solicitud 3 - rechazada -->
-                <div class="solicitud-tarjeta rechazada">
-                    <div class="solicitud-header">
-                        <h3>Solicitud para Simba</h3>
-                        <span class="solicitud-estado rechazada">Rechazada</span>
-                    </div>
-                    <div class="solicitud-info">
-                        <p>
-                            <img src="assets/icons/cat.svg" alt="Mascota" class="icono-pequeno" />
-                            <strong>Mascota:</strong> Simba - Gato, 1 año
-                        </p>
-                        <p>
-                            <img src="assets/icons/calendar.svg" alt="Fecha" class="icono-pequeno" />
-                            <strong>Fecha de solicitud:</strong> 05/01/2024 11:20
-                        </p>
-                    </div>
-                    <div class="solicitud-acciones">
-                        <a href="solicitud-detalle.html?id=3" class="btn btn-secundario btn-pequeno">Ver detalle</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- notificaciones -->
-            <div class="notificaciones-seccion">
-                <h2>Notificaciones recientes</h2>
-                <div class="notificacion">
-                    <img src="assets/icons/check.svg" alt="Aprobada" class="icono" />
-                    <p>Tu solicitud para Max ha sido aprobada</p>
-                    <small>Hace 2 días</small>
-                </div>
-                <div class="notificacion">
-                    <img src="assets/icons/pending.svg" alt="Pendiente" class="icono" />
-                    <p>Tu solicitud para Luna está en revisión</p>
-                    <small>Hace 3 días</small>
-                </div>
+            <h1>Mis Solicitudes de Adopcion</h1>
+            
+            <div class="solicitudes-lista" id="solicitudesLista">
+                <p class="cargando">Cargando tus solicitudes...</p>
             </div>
         </div>
     </main>
+
+<!-- pie de pagina -->
+<footer class="pie-pagina">
+    <div class="contenedor">
+        <div class="footer-grid">
+            <div class="footer-columna">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="Patitas Felices" />
+                    <span class="logo-texto">Patitas Felices</span>
+                </div>
+                <p>\(^-^)/</p>
+            </div>
+            
+            <div class="footer-columna">
+                <h4>Enlaces rapidos</h4>
+                <a href="adoptar.html">
+                    <img src="assets/icons/search.svg" alt="Adoptar" class="icono-footer" />
+                    Adoptar
+                </a>
+                <a href="donadores.html">
+                    <img src="assets/icons/donadores.svg" alt="Donadores" class="icono-footer" />
+                    Donadores
+                </a>
+                <a href="nosotros.html">
+                    <img src="assets/icons/nosotros.svg" alt="Nosotros" class="icono-footer" />
+                    Nosotros
+                </a>
+            </div>
+            
+            <div class="footer-columna">
+                <h4>Contacto</h4>
+                <p>
+                    <img src="assets/icons/email.svg" alt="Email" class="icono-footer" />
+                    patitasfelices.nz@gmail.com
+                </p>
+                <p>
+                    <img src="assets/icons/phone.svg" alt="Telefono" class="icono-footer" />
+                    618 207 4083
+                </p>
+                <p>
+                    <img src="assets/icons/location.svg" alt="Ubicacion" class="icono-footer" />
+                    Veracruz 410, Col. Morga, C.P. 34010, Durango, Mexico
+                </p>
+            </div>
+            
+            <div class="footer-columna">
+                <h4>Siguenos</h4>
+                <div class="redes-sociales">
+                    <a href="#" class="red-social">
+                        <img src="assets/icons/facebook.svg" alt="Facebook" class="icono-red-social" />
+                    </a>
+                    <a href="#" class="red-social">
+                        <img src="assets/icons/instagram.svg" alt="Instagram" class="icono-red-social" />
+                    </a>
+                    <a href="#" class="red-social">
+                        <img src="assets/icons/twitter.svg" alt="Twitter" class="icono-red-social" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>&copy; 2026 Patitas Felices. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    
+    <!-- Configuracion -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/solicitudes.js"></script>
+    
+    <script>
+        const enlacesNav = document.getElementById('enlacesNav');
+        const solicitudesLista = document.getElementById('solicitudesLista');
+
+        window.cerrarSesion = async function() {
+            try {
+                await auth.signOut();
+                window.location.href = 'index.html';
+            } catch (error) {
+                console.error('Error al cerrar sesion:', error);
+            }
+        };
+
+        function crearEnlacesNavegacion(usuario = null, userData = null) {
+            if (usuario && userData) {
+                return `
+                    <a href="index.html" class="enlace">
+                        <img src="assets/icons/home.svg" alt="Inicio" class="icono" />
+                        Inicio
+                    </a>
+                    <a href="adoptar.html" class="enlace">
+                        <img src="assets/icons/search.svg" alt="Adoptar" class="icono" />
+                        Adoptar
+                    </a>
+                    <a href="donadores.html" class="enlace">
+                        <img src="assets/icons/donadores.svg" alt="Donadores" class="icono" />
+                        Donadores
+                    </a>
+                    <a href="nosotros.html" class="enlace">
+                        <img src="assets/icons/nosotros.svg" alt="Nosotros" class="icono" />
+                        Nosotros
+                    </a>
+                    <div class="usuario-menu-container">
+                        <div class="usuario-menu" onclick="toggleDropdown(event)">
+                            <img src="assets/icons/user.svg" alt="Usuario" class="icono" />
+                            <span class="usuario-nombre">${userData.nombre || 'Usuario'}</span>
+                            <img src="assets/icons/arrow-down.svg" alt="▼" class="icono-pequeno" />
+                        </div>
+                        <div class="usuario-dropdown" id="usuarioDropdown">
+                            <a href="mis-solicitudes.html" class="activo">
+                                <img src="assets/icons/pending.svg" alt="Solicitudes" class="icono-pequeno" />
+                                Mis Solicitudes
+                            </a>
+                            ${userData.esAdmin ? `
+                                <a href="admin/index.html">
+                                    <img src="assets/icons/admin.svg" alt="Admin" class="icono-pequeno" />
+                                    Panel Admin
+                                </a>
+                            ` : ''}
+                            <hr>
+                            <a href="#" onclick="cerrarSesion(); return false;">
+                                <img src="assets/icons/logout.svg" alt="Salir" class="icono-pequeno" />
+                                Cerrar Sesion
+                            </a>
+                        </div>
+                    </div>
+                `;
+            } else {
+                window.location.href = 'login/login.html';
+                return '';
+            }
+        }
+
+        window.toggleDropdown = function(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('usuarioDropdown');
+            dropdown.classList.toggle('show');
+        };
+
+        document.addEventListener('click', function() {
+            const dropdown = document.getElementById('usuarioDropdown');
+            if (dropdown && dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+            }
+        });
+
+        function formatearFecha(fechaISO) {
+            if (!fechaISO) return 'Fecha no disponible';
+            try {
+                const fecha = new Date(fechaISO);
+                return fecha.toLocaleDateString('es-ES', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            } catch (e) {
+                return 'Fecha no disponible';
+            }
+        }
+
+        async function cargarMisSolicitudes() {
+            try {
+                const solicitudes = await obtenerMisSolicitudes();
+                
+                if (solicitudes.length === 0) {
+                    solicitudesLista.innerHTML = `
+                        <div class="sin-resultados">
+                            <p>No tienes solicitudes de adopcion aun.</p>
+                            <a href="adoptar.html" class="btn btn-primario">Ver mascotas disponibles</a>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                solicitudesLista.innerHTML = solicitudes.map(s => {
+                    let estadoTexto = '';
+                    let estadoClase = '';
+                    
+                    switch(s.estado) {
+                        case 'pendiente':
+                            estadoTexto = 'En revision';
+                            estadoClase = 'pendiente';
+                            break;
+                        case 'aprobada':
+                            estadoTexto = 'Aprobada';
+                            estadoClase = 'aprobada';
+                            break;
+                        case 'rechazada':
+                            estadoTexto = 'Rechazada';
+                            estadoClase = 'rechazada';
+                            break;
+                    }
+                    
+                    const fechaSolicitud = formatearFecha(s.fechaSolicitud);
+                    
+                    return `
+                        <div class="solicitud-tarjeta ${estadoClase}">
+                            <div class="solicitud-header">
+                                <h3>Solicitud para ${s.mascota?.nombre || 'Mascota'}</h3>
+                                <span class="solicitud-estado ${estadoClase}">${estadoTexto}</span>
+                            </div>
+                            <div class="solicitud-info">
+                                <p><strong>Mascota:</strong> ${s.mascota?.nombre || 'No especificado'} (${s.mascota?.especie || 'No especificado'})</p>
+                                <p><strong>Fecha de solicitud:</strong> ${fechaSolicitud}</p>
+                                ${s.motivoRechazo ? `<p><strong>Motivo:</strong> ${s.motivoRechazo}</p>` : ''}
+                                ${s.fechaProcesamiento ? `<p><strong>Fecha de respuesta:</strong> ${formatearFecha(s.fechaProcesamiento)}</p>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+            } catch (error) {
+                console.error('Error cargando solicitudes:', error);
+                solicitudesLista.innerHTML = `
+                    <div class="error">
+                        <p>Error al cargar tus solicitudes</p>
+                        <button onclick="cargarMisSolicitudes()" class="btn btn-secundario">Reintentar</button>
+                    </div>
+                `;
+            }
+        }
+
+        auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                try {
+                    const userDoc = await db.collection('usuarios').doc(user.uid).get();
+                    if (userDoc.exists) {
+                        const userData = userDoc.data();
+                        enlacesNav.innerHTML = crearEnlacesNavegacion(user, userData);
+                        await cargarMisSolicitudes();
+                    } else {
+                        window.location.href = 'login/login.html';
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    window.location.href = 'login/login.html';
+                }
+            } else {
+                window.location.href = 'login/login.html';
+            }
+        });
+    </script>
 </body>
 </html>
